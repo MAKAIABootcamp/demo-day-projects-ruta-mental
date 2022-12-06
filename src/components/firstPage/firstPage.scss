@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+//import universals
+@import "../../style/universal.scss";
+
+//variables SASS
+$color-background: #F4F9F9;
+$color-blue-light: #F4F9F9;
+$color-blue: #A4EBF3;
+$color-gray: #AAAAAA;
+$color-text-dark: #47525E;
+
+$fontFamily: 'Poppins';
+
+.body{
+    width: 100%;
+    height: 100vh;
+    background-color: $color-background;
+    font-family: $fontFamily;
+}
+
+.mainFirstPage{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    &__sectionLeft{
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        img{
+            width: 604px;
+            height: 604px;
+        }
+    }
+    &__sectionRight{
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        article{
+            height: 400px;
+            width: 457px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            h1{
+                font-size: 48px;
+                color: $color-text-dark;
+            }
+        }
+    }
+    &__text{
+        height: 208px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        p{
+            color: $color-gray;
+            font-size: 26px;
+        }
+        button{
+            height: 74px;
+            width: 100%;
+            color: #FFFFFF;
+            font-size: 26px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 30px;
+            background-color: $color-blue;
+            border: none;
+            cursor: pointer;
+        }
+    }
+}

@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+//import universals
+@import "../../style/universal.scss";
+
+//variables SASS
+$color-background: #F4F9F9;
+$color-blue-light: #F4F9F9;
+$color-blue: #A4EBF3;
+$color-gray: #AAAAAA;
+
+$fontFamily: 'Poppins';
+
+.body{
+    width: 100%;
+    height: 100vh;
+    background-color: $color-background;
+    font-family: $fontFamily;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainLogin{
+    width: 85%;
+    height: 90%;
+    background-color: #FFFFFF;
+    border-radius: 50px;
+    display: flex;
+    &__left{
+        width: 70%;
+    }
+    &__leftTop{
+        height: 100px;
+        display: flex;
+        align-items: center;
+        padding-left: 30px;
+        figure{
+            display: flex;
+            align-items: center;
+            img{
+                width: 75px;
+                height: 75px;
+            }
+            span{
+                color: #969FAA;
+                font-size: 20px
+            }
+        }
+    }
+    &__leftContent{
+        height: calc(100% - 100px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    &__leftContentTop{
+        display: flex;
+        flex-direction: column;
+        width: 487px;
+        align-items: center;
+        h1{
+            font-size: 60px;
+            color: #47525E;
+        }
+        p{
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #47525E;
+        }
+    }
+    &__providers{
+        display: flex;
+        gap: 25px;
+        margin-bottom: 10px;
+        img{
+            width: 50px;
+            cursor: pointer;
+        }
+    }
+    &__linesBox{
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 5px;
+        hr{
+            width: 43%;
+            height: 1.5px;
+            color: $color-gray;
+            background-color: $color-gray;
+            border: none;
+        }
+        p{
+            transform: translateY(8px);
+            color: #AAAAAA;
+        }
+    }
+    &__leftContentForm{
+        width: 487px;
+        form{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: 30px;
+        }
+        button{
+            height: 51px;
+            width: 260px;
+            background-color: $color-blue;
+            border-radius: 30px;
+            border: none;
+            font-size: 20px;
+            color: #FFFFFF;
+            cursor: pointer;
+        }
+    }
+    &__formInputs{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        input{
+            width: 100%;
+            height: 40px;
+            font-size: 14px;
+            border-radius: 15px;
+            background: #CCF2F4;
+            opacity: 0.6;
+            border: none;
+            padding: 0 20px;
+            outline: none;
+        }
+    }
+    &__right{
+        width: 30%;
+        background-color: $color-blue;
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    &__rightContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        h2{
+            font-size: 34px;
+            color: #FFFFFF;
+            text-align: center;
+        }
+        div{
+            width: 240px;
+            height: 240px;
+            background-color: rgba(255,255,255,0.5);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+    &__registerButton{
+        width: 187px;
+        height: 187px;
+        background-color: white;
+        border: none;
+        border-radius: 50%;
+        font-size: 22px;
+        color: $color-gray;
+        cursor: pointer;
+        &:hover{
+            width: 195px;
+            height: 195px;
+            transition: 0.5s;
+            background-color: #FFFFFF
+        }
+    }
+}
+
