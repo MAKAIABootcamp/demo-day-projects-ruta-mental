@@ -16,6 +16,7 @@
  background-color: #a4ebf379;
  display: flex;
  align-items: center;
+ gap: 50px;
  justify-content: space-between;
  padding: 0 10vw;
  &__logo{
@@ -23,6 +24,7 @@
  }
  &__links{
     display: flex;
+    flex-wrap: wrap;
     gap: 50px;
     p{
         cursor: pointer;
@@ -56,12 +58,13 @@ object-fit: cover;
         width: 200px;
         position: absolute;
         z-index: 2;
+        height: 250px;
         line-height: 5vw;
         font-weight: 600;
         color: #608FAE;
         font-size: 5vw;
         top: 30vh;
-        left: 10vw;
+        left: 5vw;
     }
     &__circulo{
         position: absolute;

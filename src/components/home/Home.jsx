@@ -20,18 +20,17 @@ const Home = () => {
         <nav className='navbar'>
           <div className='navbar__iconos'>
             <img src={logo} className='navbar__logo' />
-            <p>Nombre</p>
+            <p>Ruta Mental</p>
           </div>
           <div className='navbar__links'>
-            <p>HOME</p>
-            <p>HELP</p>
-            <p>INFORMATION</p>
-            <p>EXERCISES</p>
+            <p>Home</p>
+            <p>Information</p>
+            <p>Exercises</p>
             <button onClick={logOut}>Logout</button>
           </div>
         </nav>
         <img src={fondo} className='imgFondo' />
-        <div className='header__frase'>NO ESTÁS SOLO</div>
+        <div className='header__frase'>NO<br/>ESTÁS<br/>SOLO</div>
         <div className='header__circulo'>
           <div className='header__circulo__sombra'></div>
 
