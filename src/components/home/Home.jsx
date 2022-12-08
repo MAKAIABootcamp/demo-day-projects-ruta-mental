@@ -23,10 +23,11 @@ const Home = () => {
             <p>Ruta Mental</p>
           </div>
           <div className='navbar__links'>
-            <p>Home</p>
-            <p>Information</p>
-            <p>Exercises</p>
-            <button onClick={logOut}>Logout</button>
+            <p>INICIO</p>
+            <p>AYUDA</p>
+            <p>INFORMACIÓN</p>
+            <p>EJERCICIOS</p>
+            <button onClick={logOut}>CERRAR SESIÓN</button>
           </div>
         </nav>
         <img src={fondo} className='imgFondo' />

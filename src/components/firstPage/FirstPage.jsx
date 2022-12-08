@@ -17,7 +17,7 @@ const FirstPage = () => {
             </section>
             <section className='mainFirstPage__sectionRight'>
                 <article>
-                    <h1>Cuentanos un poco sobre ti</h1>
+                    <h1>Cuéntanos un poco sobre ti</h1>
                     <div className='mainFirstPage__text'>
                         <p>Responde algunas preguntas para conocerte mejor.</p>
                         <button onClick={()=>{handleNavigate('questionnaire')}}>Continuar</button>
