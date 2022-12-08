@@ -20,14 +20,14 @@ const Home = () => {
         <nav className='navbar'>
           <div className='navbar__iconos'>
             <img src={logo} className='navbar__logo' />
-            <p>Nombre</p>
+            <p>Ruta Mental</p>
           </div>
           <div className='navbar__links'>
-            <p>HOME</p>
-            <p>HELP</p>
-            <p>INFORMATION</p>
-            <p>EXERCISES</p>
-            <button onClick={logOut}>Logout</button>
+            <p>INICIO</p>
+            <p>AYUDA</p>
+            <p>INFORMACIÓN</p>
+            <p>EJERCICIOS</p>
+            <button onClick={logOut}>CERRAR SESIÓN</button>
           </div>
         </nav>
         <img src={fondo} className='imgFondo' />
@@ -37,7 +37,7 @@ const Home = () => {
 
           ¿Necesitas ayuda?
         </div>
-        <div className='header__text'>Aprende cómo mantenerte seguro, superar una crisis y encontrar tratamiento.</div>
+        <div className='header__text'>Aprende cómo superar una crisis, mejorar tus habilidades psicológicas y encontrar acompañamiento.</div>
       </header>
       <div className='main'>
     <h2 className='main__text'>Si estás en una situación que afecte tu bienestar emocional...</h2>
