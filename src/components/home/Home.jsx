@@ -1,11 +1,11 @@
 import React from 'react'
 import './style.scss'
-import logo from '../assets/images/logo.png'
-import fondo from '../assets/images/fondo.png'
+import logo from '../../assets/images/logo.png'
+import fondo from '../../assets/images/fondo.png'
 import { useNavigate } from 'react-router'
-import { actionLogoutAsync } from '../redux/actions/userAction'
+import { actionLogoutAsync } from '../../redux/actions/userAction'
 import { useDispatch } from 'react-redux'
-const Main = () => {
+const Home = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const handleNavigate = (direction) => {
@@ -50,4 +50,4 @@ const Main = () => {
   )
 }
 
-export default Main
+export default Home
