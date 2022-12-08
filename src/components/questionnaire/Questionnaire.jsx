@@ -19,14 +19,25 @@ const Questionnaire = () => {
                 response
             ]
         )
-        setValue(value+1)
-        if(value === 4) {
-            setValue(0)
-            console.log(responses)
-            dispatch(addFormSync([...responses]))
-            setResponses([])
-            navigate('/home')
+        if(value <4) {
+            setValue(value+1)
+        }else {
+            setValue(4)
         }
+        console.log(responses)
+        if(value === 4) {
+            handleSetForm(response)
+        }
+    }
+    const handleSetForm = (resp) => {
+        const tempForm = [
+            ...responses,
+            resp
+        ]
+        console.log(tempForm)
+        dispatch(addFormSync([tempForm]))
+        setResponses([])
+        navigate('/home')
     }
     
   return (
