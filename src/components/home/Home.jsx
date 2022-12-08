@@ -1,11 +1,11 @@
 import React from 'react'
 import './style.scss'
-import logo from '../assets/images/logo.png'
-import fondo from '../assets/images/fondo.png'
+import logo from '../../assets/images/logo.png'
+import fondo from '../../assets/images/fondo.png'
 import { useNavigate } from 'react-router'
-import { actionLogoutAsync } from '../redux/actions/userAction'
+import { actionLogoutAsync } from '../../redux/actions/userAction'
 import { useDispatch } from 'react-redux'
-const Main = () => {
+const Home = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const handleNavigate = (direction) => {
@@ -20,14 +20,14 @@ const Main = () => {
         <nav className='navbar'>
           <div className='navbar__iconos'>
             <img src={logo} className='navbar__logo' />
-            <p>Ruta Mental</p>
+            <p>Nombre</p>
           </div>
           <div className='navbar__links'>
-            <p>INICIO</p>
-            <p>AYUDA</p>
-            <p>INFORMACIÓN</p>
-            <p>EJERCICIOS</p>
-            <button onClick={logOut}>Cerrar sesión</button>
+            <p>HOME</p>
+            <p>HELP</p>
+            <p>INFORMATION</p>
+            <p>EXERCISES</p>
+            <button onClick={logOut}>Logout</button>
           </div>
         </nav>
         <img src={fondo} className='imgFondo' />
@@ -37,7 +37,7 @@ const Main = () => {
 
           ¿Necesitas ayuda?
         </div>
-        <div className='header__text'>Aprende cómo superar una crisis, mejorar tus habilidades psicológicas y encontrar acompañamiento.</div>
+        <div className='header__text'>Aprende cómo mantenerte seguro, superar una crisis y encontrar tratamiento.</div>
       </header>
       <div className='main'>
     <h2 className='main__text'>Si estás en una situación que afecte tu bienestar emocional...</h2>
@@ -50,5 +50,4 @@ const Main = () => {
   )
 }
 
-export default Main
-
+export default Home
