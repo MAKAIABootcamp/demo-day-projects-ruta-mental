@@ -10,16 +10,19 @@ import { actionLogoutAsync } from '../../redux/actions/userAction'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-scroll'
 import { actionFillPhoneLinesAsync } from '../../redux/actions/phoneLinesActions'
+import { actionFillPlacesAsync } from '../../redux/actions/placesActions'
 const Home = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const user = useSelector((store) => store.userStore);
   const { phoneLines } = useSelector((store) => store.phoneLinesStore);
-
+  const { places } = useSelector((store) => store.placesStore);
   useEffect(() => {
     dispatch(actionFillPhoneLinesAsync())
+    dispatch(actionFillPlacesAsync())
     console.log(user)
     console.log(phoneLines)
+    console.log(places)
 }, [dispatch])
 
   const handleNavigate = (direction) => {
