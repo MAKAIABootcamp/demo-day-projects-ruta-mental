@@ -67,6 +67,15 @@ const Home = () => {
                   <p>Atención: 24 horas</p>
                 </div>
               </article>
+              <article>
+                <img src={phoneIcon} alt="Phone icon" />
+                <div className='mainHome__phoneLineInfo'>
+                  <h4>Número Único de Seguridad y Emergencias</h4>
+                  <p>Número: <span>123 Social</span></p>
+                  <p className='mainHome__phoneLineDescription'>Servicios de información, orientación, asesoría. intervención en crisis y verificación en campo a población vulnerable en situación de riesgo y que vive emergencias de tipo personal, familiar y/o social.</p>
+                  <p>Atención: 24 horas</p>
+                </div>
+              </article>
             </div>
           </div>
           <div className='mainHome__phoneLinesBLRight'>
