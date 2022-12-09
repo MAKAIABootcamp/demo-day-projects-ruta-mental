@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './style.scss'
 import logo from '../../assets/images/logoImageWhite.png'
 import fondo from '../../assets/images/fondo.png'
@@ -7,11 +7,21 @@ import illustrationCallCenter from '../../assets/images/illustrationCallCenter.p
 import locationIcon from '../../assets/images/locationIcon.png'
 import { useNavigate } from 'react-router'
 import { actionLogoutAsync } from '../../redux/actions/userAction'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-scroll'
+import { actionFillPhoneLinesAsync } from '../../redux/actions/phoneLinesActions'
 const Home = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const user = useSelector((store) => store.userStore);
+  const { phoneLines } = useSelector((store) => store.phoneLinesStore);
+
+  useEffect(() => {
+    dispatch(actionFillPhoneLinesAsync())
+    console.log(user)
+    console.log(phoneLines)
+}, [dispatch])
+
   const handleNavigate = (direction) => {
     navigate(`/${direction}`)
   }
