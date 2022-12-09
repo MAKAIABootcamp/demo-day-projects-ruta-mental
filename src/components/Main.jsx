@@ -1,16 +1,30 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './style.scss'
 import logo from '../assets/images/logo.png'
 import fondo from '../assets/images/fondo.png'
 import { useNavigate } from 'react-router'
 import { actionLogoutAsync } from '../redux/actions/userAction'
 import { useDispatch } from 'react-redux'
+import  { ubi } from './Mapa'
+
+
+
+
 const Main = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const handleNavigate = (direction) => {
     navigate(`/${direction}`)
   }
+
+useEffect(() => {
+ubi()
+
+}, [])
+
+
+
+  
   const logOut = () => {
     dispatch(actionLogoutAsync());
   };
@@ -40,11 +54,13 @@ const Main = () => {
         <div className='header__text'>Aprende cómo mantenerte seguro, superar una crisis y encontrar tratamiento.</div>
       </header>
       <div className='main'>
+   
     <h2 className='main__text'>Si estás en una situación que afecte tu bienestar emocional...</h2>
     <h2 className='main__text'>Desde cualquier ciudad del país marca 192, opción 4. Línea del Ministerio de Salud.</h2>
     <h2 className='main__text'>Si resides en Antioquia, llama gratis a estas líneas: </h2>
     <h2>01 8000 413 838</h2>
     <h2>Salud para el alma (604) 440 76 49</h2>
+
       </div>
     </div>
   )
