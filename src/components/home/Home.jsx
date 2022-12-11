@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-scroll'
 import { actionFillPhoneLinesAsync } from '../../redux/actions/phoneLinesActions'
 import { actionFillPlacesAsync } from '../../redux/actions/placesActions'
+import Navbar from '../navbar/Navbar'
 
 const Home = () => {
   const navigate = useNavigate()
@@ -35,18 +36,7 @@ const Home = () => {
   return (
     <div>
       <header className='header'>
-        <nav className='navbar'>
-          <div className='navbar__iconos'>
-            <img src={logo} className='navbar__logo' />
-            <p>Ruta Mental</p>
-          </div>
-          <div className='navbar__links'>
-            <p>Inicio</p>
-            <p>Información</p>
-            <p>Ejercicios</p>
-            <button onClick={logOut}>Cerrar Sesión</button>
-          </div>
-        </nav>
+        <Navbar />
         <img src={fondo} className='imgFondo' />
         <div className='header__frase'>NO<br />ESTÁS<br />SOLO</div>
         <Link className='header__circulo' to="mainHome__phoneLinesBL" spy={true} smooth={true} offset={50} duration={600}>
