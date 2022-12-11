@@ -12,6 +12,7 @@ import { Link } from 'react-scroll'
 import { actionFillPhoneLinesAsync } from '../../redux/actions/phoneLinesActions'
 import { actionFillPlacesAsync } from '../../redux/actions/placesActions'
 import Navbar from '../navbar/Navbar'
+import { getUserLocation } from '../../services/getLocation'
 
 const Home = () => {
   const navigate = useNavigate()
@@ -26,6 +27,10 @@ const Home = () => {
     console.log(phoneLines)
     console.log(places)
   }, [dispatch])
+  useEffect(() => {
+    getUserLocation()
+  }, [])
+  
 
   const handleNavigate = (direction) => {
     navigate(`/${direction}`)
