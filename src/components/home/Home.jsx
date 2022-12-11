@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import './style.scss'
 import logo from '../../assets/images/logoImageWhite.png'
+import logoFooter from '../../assets/images/logoImage.png'
 import fondo from '../../assets/images/fondo.png'
 import phoneIcon from '../../assets/images/phoneIcon.png'
 import illustrationCallCenter from '../../assets/images/illustrationCallCenter.png'
@@ -153,7 +154,7 @@ const Home = () => {
       <footer>
         <div className='footer'>
           <div className='footer__content'>
-            <img src={logo} className='footer__logo' />
+            <img src={logoFooter} className='footer__logo' />
             <p>Ruta Mental</p>
           </div>
           <div>
@@ -169,3 +170,4 @@ const Home = () => {
 }
 
 export default Home
+

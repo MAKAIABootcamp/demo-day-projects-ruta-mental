@@ -25,7 +25,7 @@ export const questionnaire = [
       }
   },
   {
-    question: "Con qué género te identificas",
+    question: "¿Con qué género te identificas?",
     options: {
       option1: "Masculino",
       option2: "Femenino",
