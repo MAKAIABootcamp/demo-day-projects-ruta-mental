@@ -206,6 +206,24 @@ $color-gray: #AAAAAA;
         gap: 30px;
         width: 100%;
         overflow-y: scroll;
+        article {
+            display: flex;
+            gap: 23px;
+
+            img {
+                width: 65px;
+                height: 65px;
+            }
+        }
+    }
+    &__selectContainer{
+        width: 300px;
+        display: flex;
+        justify-content: end;
+        position: relative;
+        justify-content: center;
+        height: 60px;
+        margin-bottom: 15px;
         select{
             -webkit-appearance: none;
             -moz-appearance: none;
@@ -221,31 +239,16 @@ $color-gray: #AAAAAA;
         
             //min-width: 200px;
             margin: 0 5px 5px 0;
-            width: 50%;
+            width: 300%;
             font-size: 16px;
         }
         select::-ms-expand {
             display: none;
         }
-        article {
-            display: flex;
-            gap: 23px;
-
-            img {
-                width: 65px;
-                height: 65px;
-            }
-        }
-    }
-    &__selectContainer{
-        width: 70%;
-        display: flex;
-        justify-content: end;
-        position: relative;
         &:after{
             content: " ";
             position: absolute;
-            right: 15px;
+            right: 20px;
             top: 46%;
             margin-top: -3px;
             z-index: 2;
@@ -337,7 +340,8 @@ $color-gray: #AAAAAA;
 
     &__placesContainer {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
+        gap: 13%;
         width: 100%;
         margin-top: 60px;
 

@@ -75,7 +75,7 @@ const Exercises = () => {
           <section className='mainExercises__ex2'>
             <div className='mainExercises__ex2Container container'>
               <div className='mainExercises__ex2Info'>
-                <h3>Materials</h3>
+                <h3>Materiales</h3>
                 <div className='mainExercises__ex2Materials'>
                   <p>• Pelota de ping pong</p>
                 </div>
