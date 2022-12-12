@@ -105,9 +105,7 @@ const cambio =( ubi)=>{
                 {
                   category.map((element, index)=>(
                     <option key={index} >{element.label}</option>
-                  ))
-
-                
+                  ))               
                 }
               </select>
               </div>
@@ -125,12 +123,9 @@ const cambio =( ubi)=>{
                     <p><span>{element.linea1.phone2}</span></p>
                     <p className='mainHome__phoneLineDescription'>{element.linea1.description}</p>
                     <p>{element.linea1.hour}</p>
-                  </div>
-                   
-                
+                  </div>               
                 </article>
-              
-                
+               
               }if(element.linea1 && element.linea2 && !element.linea3 && !element.linea4){
                 return <> <article key={index}>
                   <img src={phoneIcon} alt="Phone icon" />
@@ -142,9 +137,8 @@ const cambio =( ubi)=>{
                     <p className='mainHome__phoneLineDescription'>{element.linea1.description}</p>
                     <p>{element.linea1.hour}</p>
                   </div>
-                   
-                
                 </article>
+
                 <article key={index+1}>
                   <img src={phoneIcon} alt="Phone icon" />
                 
@@ -154,9 +148,44 @@ const cambio =( ubi)=>{
                     <p><span>{element.linea2.phone2}</span></p>
                     <p className='mainHome__phoneLineDescription'>{element.linea2.description}</p>
                     <p>{element.linea2.hour}</p>
-                  </div>
-                   
+                  </div>               
+                </article>
+                </>
+
+              }if(element.linea1 && element.linea2 && element.linea3 && !element.linea4){
+                return <> <article key={index}>
+                  <img src={phoneIcon} alt="Phone icon" />
                 
+                      <div className='mainHome__phoneLineInfo' >
+                    <h4>{element.linea1.name}</h4>
+                    <p>Número: <span>{element.linea1.phone}</span></p>
+                    <p><span>{element.linea1.phone2}</span></p>
+                    <p className='mainHome__phoneLineDescription'>{element.linea1.description}</p>
+                    <p>{element.linea1.hour}</p>
+                  </div>                                 
+                </article>
+
+                <article key={index+1}>
+                  <img src={phoneIcon} alt="Phone icon" />              
+                      <div className='mainHome__phoneLineInfo' >
+                    <h4>{element.linea2.name}</h4>
+                    <p>Número: <span>{element.linea2.phone}</span></p>
+                    <p><span>{element.linea2.phone2}</span></p>
+                    <p className='mainHome__phoneLineDescription'>{element.linea2.description}</p>
+                    <p>{element.linea2.hour}</p>
+                  </div>                
+                </article>
+
+                <article key={index+2}>
+                  <img src={phoneIcon} alt="Phone icon" />
+                
+                      <div className='mainHome__phoneLineInfo' >
+                    <h4>{element.linea3.name}</h4>
+                    <p>Número: <span>{element.linea3.phone}</span></p>
+                    <p><span>{element.linea3.phone2}</span></p>
+                    <p className='mainHome__phoneLineDescription'>{element.linea3.description}</p>
+                    <p>{element.linea3.hour}</p>
+                  </div>
                 </article>
                 </>
               }else{
@@ -197,8 +226,7 @@ const cambio =( ubi)=>{
                 </article>
 
                 <article key={index+3}>
-                  <img src={phoneIcon} alt="Phone icon" />
-                
+                  <img src={phoneIcon} alt="Phone icon" />               
                       <div className='mainHome__phoneLineInfo' >
                     <h4>{element.linea4.name}</h4>
                     <p>Número: <span>{element.linea4.phone}</span></p>
@@ -209,10 +237,8 @@ const cambio =( ubi)=>{
                 </article>
                 </>
               }
-
               })
-              }
-                
+              }               
               </div>
             </div>
           

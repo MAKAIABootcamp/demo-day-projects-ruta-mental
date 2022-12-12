@@ -64,16 +64,66 @@ export const questionnaire = [
   },
 ]
 export const category = [
+  
   {
-    label: "Medellín",
+    label: "Barbosa",
     value: 1,
   },
   {
-    label: "Carepa",
+    label: "Bello",
     value: 2,
   },
   {
-    label: "Marinilla",
+    label: "Carepa",
     value: 3,
+  },
+  {
+    label: "Copacabana",
+    value: 4,
+  },
+  {
+    label: "Envigado",
+    value: 5,
+  },
+  {
+    label: "La Estrella",
+    value: 6,
+  },
+  {
+    label: "Girardota",
+    value: 7,
+  },
+  {
+    label: "Guarne",
+    value: 8,
+  },
+  {
+    label: "Guatapé",
+    value: 9,
+  },
+  {
+    label: "Itagüí",
+    value: 10,
+  },
+  {
+    label: "Marinilla",
+    value: 11,
+  },
+  {
+    label: "Medellín",
+    value: 12,
+  },
+  {
+    label: "Rionegro",
+    value: 13,
+  },
+  {
+    label: "Sabaneta",
+    value: 14,
+  },
+  {
+    label: "Santuario",
+    value: 15,
   }
+  
 ];
