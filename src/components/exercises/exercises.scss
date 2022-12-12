@@ -1,0 +1,464 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+//import universals
+@import "../../style/universal.scss";
+
+//variables SASS
+$color-background: #F4F9F9;
+$color-blue-light: #CCF2F4;
+$color-blue-lighter: #D9F3F6;
+$color-blue: #A4EBF3;
+$color-blue-dark: #7DC3CF;
+$color-gray: #AAAAAA;
+$color-text-dark: #47525E;
+
+$fontFamily: 'Poppins';
+
+.body{
+    width: 100%;
+    height: 100%;
+    background-color: $color-background;
+    font-family: $fontFamily;
+    display: flex;
+    flex-direction: column;
+}
+
+.container{
+    margin: 0 auto;
+    width: 85%;
+}
+
+.headerExercises{
+    height: 437px;
+    background-color: $color-blue-dark;
+    width: 100%;
+    &__navSection{
+        height: 20vh;
+    }
+    &__section{
+        height: calc(437px - 20vh);
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        h2{
+            font-size: 39px;
+            color: #FFFFFF;
+            width: 520px;
+        }
+        img{
+            width: 237px;
+            height: 237px;
+        }
+    }
+    &__exConButton{
+        position: fixed;
+        top: 20vh;
+        right: 0;
+        height: 78px;
+        width: 150px;
+        background-color: #4F87A1;
+        border-radius: 30px 0 0 30px;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        padding-left: 20px;
+        color: #FFFFFF;
+        cursor: pointer;
+        &:hover{
+            width: 165px;
+            transition: 0.4s;
+        }
+    }
+    &__exResButton{
+        position: fixed;
+        top: calc(20vh + 84px);
+        right: 0;
+        height: 78px;
+        width: 150px;
+        background-color: #4F87A1;
+        border-radius: 30px 0 0 30px;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        padding-left: 20px;
+        color: #FFFFFF;
+        cursor: pointer;
+        &:hover{
+            width: 165px;
+            transition: 0.4s;
+        }
+    }
+}
+
+.mainExercises{
+    width: 100%;
+    &__pautas{
+        height: 380px;
+        width: 100%;
+    }
+    &__pautasContainer{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding: 0 50px;
+        gap: 100px;
+        h2{
+            font-size: 51px;
+        }
+    }
+    &__pautasInfo{
+        height: 261px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        div{
+            display: flex;
+            gap: 13px;
+        }
+        p{
+            font-size: 20px;
+            color: $color-gray;
+            font-weight: bold;
+        }
+    }
+    &__ex1{
+        height: 600px;
+        background-color: $color-blue-lighter;
+    }
+    &__ex1Container{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        figure{
+            width: 436px;
+            height: 470px;
+            border-radius: 20px;
+            position: relative;
+            div{
+                width: 65px;
+                height: 65px;
+                background-color: #FFFFFF;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 26px;
+                color: $color-gray;
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                border-radius: 20px;
+            }
+        }
+        img{
+            width: 436px;
+            height: 470px;
+            border-radius: 20px;
+        }
+    }
+    &__ex1Info{
+        width: 794px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        h3{
+            color: $color-text-dark;
+            font-size: 40px;
+        }
+        p{
+            color: $color-gray;
+            font-size: 20px;
+        }
+    }
+    &__ex1Materials{
+        height: 124px;
+        width: 739px;
+        background-color: #FFFFFF;
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        color: $color-gray;
+        font-size: 20px;
+        padding: 20px 30px;
+        border-radius: 20px;
+    }
+    &__ex1List{
+        width: 110px;
+    }
+    &__ex1MaterialsDescription{
+        width: 501px;
+    }
+    &__ex2{
+        height: 600px; 
+    }
+    &__ex2Container{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        figure{
+            width: 445.33px;
+            height: 334px;
+            border-radius: 20px;
+            position: relative;
+            div{
+                width: 65px;
+                height: 65px;
+                border-radius: 20px;
+                font-size: 26px;
+                background-color: #FFFFFF;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                color: $color-gray;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+        img{
+            width: 445.33px;
+            height: 334px;
+            border-radius: 20px;
+        }
+    }
+    &__ex2Info{
+        height: 371px;
+        width: 794px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        h3{
+            font-size: 40px;
+            color: $color-text-dark;
+        }
+        p{
+            font-size: 20px;
+            color: $color-gray;
+        }
+    }
+    &__ex2Materials{
+        width: 739px;
+        height: 90px;
+        background-color: #FFFFFF;
+        border-radius: 20px;
+        padding: 0 30px;
+        display: flex;
+        align-items: center;
+        font-size: 20px;
+        color: $color-gray;
+    }
+    &__ex3{
+        height: 600px;
+        background-color: $color-blue-lighter;  
+    }
+    &__ex3Container{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        figure{
+            width: 445px;
+            height: 404.17px;
+            border-radius: 20px;
+            position: relative;
+            div{
+                width: 65px;
+                height: 65px;
+                background-color: #FFFFFF;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 26px;
+                color: $color-gray;
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                border-radius: 20px;
+            }
+        }
+        img{
+            width: 425px;
+            height: 404.17px;
+            border-radius: 20px;
+        }
+    }
+    &__ex3Info{
+        height: 410px;
+        width: 792px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        h3{
+            font-size: 40px;
+            color: $color-text-dark;
+        }
+        p{
+            font-size: 20px;
+            color: $color-gray;
+        }
+    }
+    &__ex3Materials{
+        width: 739px;
+        height: 90px;
+        background-color: #FFFFFF;
+        border-radius: 20px;
+        padding: 0 30px;
+        display: flex;
+        align-items: center;
+        font-size: 20px;
+        color: $color-gray;
+        gap: 30px;
+    }
+    &__breathTechniques{
+        width: 100%;
+        height: 318px;
+        background-color: $color-blue-dark;
+    }
+    &__breathTechniquesContainer{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        h2{
+            font-size: 48px;
+            color: #FFFFFF;
+        }
+        img{
+            width: 268px;
+            height: 268px;
+        }
+    }
+    &__breathEx{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    &__breathEx1{
+        display: flex;
+        height: 601px;
+        align-items: center;
+        justify-content: space-around;
+    }
+    &__breathEx1Image{
+        width: 550px;
+        height: 550px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        h3{
+            font-size: 40px;
+            color: $color-text-dark;
+        }
+        p{
+            font-size: 30px;
+            color: $color-gray;
+            text-align: center;
+        }
+        img{
+            position: absolute;
+            top: 15px;
+            left: -10px;
+            width: 550px;
+            height: 550px;
+        }
+    }
+    &__breathEx1Info{
+        width: 594px;
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        h3{
+            font-size: 40px;
+            color: $color-text-dark;
+        }
+    }
+    &__breathEx1Texts{
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        p{
+            height: 98px;
+            width: 100%;
+            background-color: $color-blue-light;
+            font-size: 22px;
+            color: $color-gray;
+            padding: 10px 20px;
+        }
+    }
+    &__howToStart{
+        margin-top: 30px;
+        width: 100%;
+        height: 315px;
+        display: flex;
+        justify-content: center;
+        div{
+            width: 855px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            h3{
+                font-size: 40px;
+                color: $color-text-dark;
+                text-align: center;
+            }
+            p{
+                font-size: 22px;
+                color: $color-gray;
+                text-align: justify;
+            }
+        }
+    }
+    &__breathEx2{
+        margin-top: 60px;
+        display: flex;
+        justify-content: space-evenly;
+        height: 553px;
+    }
+    &__breathEx2Info{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        img{
+            width: 200px;
+            height: 200px;
+        }
+        p{
+            width: 324px;
+            height: 194px;
+            font-size: 30px;
+            color: $color-gray;
+        }
+    }
+    &__breathEx2Image{
+        width: 550px;
+        height: 550px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        h3{
+            font-size: 40px;
+            color: $color-text-dark;
+        }
+        p{
+            font-size: 30px;
+            color: $color-gray;
+            text-align: center;
+        }
+        img{
+            position: absolute;
+            top: 15px;
+            left: -10px;
+            width: 550px;
+            height: 550px;
+        }
+    }
+}
