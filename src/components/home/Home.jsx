@@ -120,6 +120,7 @@ const cambio =( ubi)=>{
                       <div className='mainHome__phoneLineInfo' >
                     <h4>{element.linea1.name}</h4>
                     <p>Número: <span>{element.linea1.phone}</span></p>
+                    <p>Número: <span>{element.linea1.phone2}</span></p>
                     <p className='mainHome__phoneLineDescription'>{element.linea1.description}</p>
                     <p>Atención: {element.linea1.hour}</p>
                   </div>
