@@ -1,8 +1,6 @@
 
+export const ubi =()=>{
 
- export const ubi =()=>{
-
- 
 if(navigator.geolocation){
     navigator.geolocation.getCurrentPosition(success);
   }

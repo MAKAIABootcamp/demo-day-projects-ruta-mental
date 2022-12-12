@@ -3,7 +3,6 @@ import axios from "axios"
 
 import './style.scss'
 import logo from '../../assets/images/logoImageWhite.png'
-import logoFooter from '../../assets/images/logoImage.png'
 import fondo from '../../assets/images/fondo.png'
 import phoneIcon from '../../assets/images/phoneIcon.png'
 import illustrationCallCenter from '../../assets/images/illustrationCallCenter.png'
@@ -17,6 +16,7 @@ import { actionFillPlacesAsync } from '../../redux/actions/placesActions'
 import Navbar from '../navbar/Navbar'
 import { getUserLocation } from '../../services/getLocation'
 import { category } from '../../services/data'
+import Footer from '../footer/Footer'
 
 const Home = () => {
   const apiKey = 'AIzaSyD6PZyuQRcFcGpMQNZptnHLaE31CaIEkTM'
@@ -268,7 +268,7 @@ const cambio =( ubi)=>{
                 <h4>{element.lugar1.name}</h4>
                 <p>{element.lugar1.address}.</p>
                 <p>{element.lugar1.hour}</p>
-                <p>Número: {element.lugar1.phone}</p>
+                <p>{element.lugar1.phone}</p>
               </article>
             }if(element.lugar1 && element.lugar2 && !element.lugar3){
               return <> <article>
@@ -276,14 +276,14 @@ const cambio =( ubi)=>{
                 <h4>{element.lugar1.name}</h4>
                 <p>{element.lugar1.address}.</p>
                 <p>{element.lugar1.hour}</p>
-                <p>Número: {element.lugar1.phone}</p>
+                <p>{element.lugar1.phone}</p>
               </article>
               <article>
                 <img src={locationIcon} alt="Icon location" />
                 <h4>{element.lugar2.name}</h4>
                 <p>{element.lugar2.address}.</p>
                 <p>{element.lugar2.hour}</p>
-                <p>Número: {element.lugar2.phone}</p>
+                <p>{element.lugar2.phone}</p>
               </article>
               </> }
               else{
@@ -292,21 +292,21 @@ const cambio =( ubi)=>{
                 <h4>{element.lugar1.name}</h4>
                 <p>{element.lugar1.address}.</p>
                 <p>{element.lugar1.hour}</p>
-                <p>Número: {element.lugar1.phone}</p>
+                <p>{element.lugar1.phone}</p>
               </article>
               <article>
                 <img src={locationIcon} alt="Icon location" />
                 <h4>{element.lugar2.name}</h4>
                 <p>{element.lugar2.address}.</p>
                 <p>{element.lugar2.hour}</p>
-                <p>Número: {element.lugar2.phone}</p>
+                <p>{element.lugar2.phone}</p>
               </article>
               <article>
                 <img src={locationIcon} alt="Icon location" />
                 <h4>{element.lugar3.name}</h4>
                 <p>{element.lugar3.address}.</p>
                 <p>{element.lugar3.hour}</p>
-                <p>Número: {element.lugar3.phone}</p>
+                <p>{element.lugar3.phone}</p>
               </article>
               </>
               }
@@ -328,20 +328,7 @@ const cambio =( ubi)=>{
           </div>
         </section>
       </main>
-      <footer>
-        <div className='footer'>
-          <div className='footer__content'>
-            <img src={logoFooter} className='footer__logo' />
-            <p>Ruta Mental</p>
-          </div>
-          <div>
-          <p>La vía para cuidar tu salud mental y superar las dificultades.</p>
-          </div>
-          <div>
-            <p>Colombia, 2022</p>
-          </div>
-        </div>
-      </footer>
+      <Footer/>
     </div>
   )
 }
