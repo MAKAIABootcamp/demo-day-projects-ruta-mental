@@ -99,6 +99,7 @@ const cambio =( ubi)=>{
               <h2>¿A dónde puedo llamar?</h2>
               <h3>Líneas en tu localidad:</h3>
               <div className='mainHome__phoneLinesContainer'>
+              <div className='mainHome__selectContainer'>
               <select  value={locations} onChange={ (event) =>  cambio(event.target.value)  }>
                 {
                   category.map((element, index)=>(
@@ -108,6 +109,7 @@ const cambio =( ubi)=>{
                 
                 }
               </select>
+              </div>
               {
                     ubication.map((element, index)=>{
                   
