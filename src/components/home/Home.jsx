@@ -33,10 +33,7 @@ const Home = () => {
     console.log(phoneLines)
     console.log(places)
   }, [dispatch])
-  useEffect(() => {
-    
-   
-  }, [])
+
   const getUserLocation = () => {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(async (position) => {
@@ -46,7 +43,7 @@ const Home = () => {
         
             let location = data.results[0].address_components
             
-          const tempLocations = location.find((element)=>{return element.long_name == "Carepa" || element.long_name == "Medellin" ||  element.long_name =="Marinilla"})
+          const tempLocations = location.find((element)=>{return element.long_name == "Carepa" || element.long_name == "Medellín" ||  element.long_name =="Marinilla"})
           console.log(tempLocations)
             setLocations(tempLocations.long_name)
             console.log(locations)
