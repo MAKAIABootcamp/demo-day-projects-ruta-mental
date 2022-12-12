@@ -46,9 +46,9 @@ const Home = () => {
         
             let location = data.results[0].address_components
             
-            location.find((element)=>{element.long_name = "Carepa" || "Marinilla" || "Medellín"})
-      
-            setLocations(location[0].long_name)
+          const tempLocations = location.find((element)=>{return element.long_name == "Carepa" || element.long_name == "Medellin" ||  element.long_name =="Marinilla"})
+          console.log(tempLocations)
+            setLocations(tempLocations.long_name)
             console.log(locations)
 
             const filtrado = phoneLines.filter((item) =>
@@ -150,7 +150,7 @@ const Home = () => {
                    
                 
                 </article>
-                <article>
+                <article key={index+1}>
                   <img src={phoneIcon} alt="Phone icon" />
                 
                       <div className='mainHome__phoneLineInfo' >
@@ -162,7 +162,7 @@ const Home = () => {
                    
                 
                 </article>
-                <article key={index+1}>
+                <article key={index+2}>
                   <img src={phoneIcon} alt="Phone icon" />
                 
                       <div className='mainHome__phoneLineInfo' >
