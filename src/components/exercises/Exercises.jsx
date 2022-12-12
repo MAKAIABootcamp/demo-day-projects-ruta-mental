@@ -12,7 +12,7 @@ import { Link } from 'react-scroll'
 
 const Exercises = () => {
   return (
-    <div className='body'>
+    <div className='bodyExercises'>
         <NavBar />
         <header className='headerExercises'>
             <div className='headerExercises__navSection'></div>
