@@ -63,3 +63,17 @@ export const questionnaire = [
     }
   },
 ]
+export const category = [
+  {
+    label: "Medellín",
+    value: 1,
+  },
+  {
+    label: "Carepa",
+    value: 2,
+  },
+  {
+    label: "Marinilla",
+    value: 3,
+  }
+];

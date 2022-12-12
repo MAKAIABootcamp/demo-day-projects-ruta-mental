@@ -16,6 +16,7 @@ import { actionFillPhoneLinesAsync } from '../../redux/actions/phoneLinesActions
 import { actionFillPlacesAsync } from '../../redux/actions/placesActions'
 import Navbar from '../navbar/Navbar'
 import { getUserLocation } from '../../services/getLocation'
+import { category } from '../../services/data'
 
 const Home = () => {
   const apiKey = 'AIzaSyD6PZyuQRcFcGpMQNZptnHLaE31CaIEkTM'
@@ -27,34 +28,34 @@ const Home = () => {
   const [locations, setLocations] = useState({})
   const [ubication, setUbication] = useState([])
   useEffect(() => {
-
+    getUserLocation()
     dispatch(actionFillPhoneLinesAsync())
     dispatch(actionFillPlacesAsync())
     console.log(user)
     console.log(phoneLines)
     console.log(places)
   }, [dispatch])
-  useEffect(() => {
-    getUserLocation()
-    // const location = getUserLocation()
-    // console.log(location)
-  }, [])
+
   const getUserLocation = () => {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(async (position) => {
             console.log(position)
             let { data } = await axios.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + position.coords.latitude + "," + position.coords.longitude + "&sensor=false" + "&key=" + apiKey)
             console.log(data)
-            const location = data.results[0].address_components[2].short_name;
-           
-            setLocations(location)
-            console.log(location)
+        
+            let location = data.results[0].address_components
+            
+          const tempLocations = location.find((element)=>{return element.long_name == "Carepa" || element.long_name == "Medellín" ||  element.long_name =="Marinilla"})
+          console.log(tempLocations)
+            setLocations(tempLocations.long_name)
+            console.log(locations)
 
-            const filterdPaletas = phoneLines.filter((item) =>
-            item.lineLocation.toLowerCase().includes(location.toLowerCase())
+            const filtrado = phoneLines.filter((item) =>
+            item.lineLocation.toLowerCase().includes(locations.toLowerCase())
           );
-          console.log(filterdPaletas)
-          setUbication(filterdPaletas)
+       
+          console.log(filtrado)
+          setUbication(filtrado)
 
           console.log(ubication)
 
@@ -63,6 +64,14 @@ const Home = () => {
 }
 
 
+const cambio =( ubi)=>{
+  const filtrado = phoneLines.filter((item) =>
+  item.lineLocation.toLowerCase().includes(ubi.toLowerCase()))
+  console.log(filtrado)
+  setUbication(filtrado)
+  setLocations(ubi)
+  console.log(ubication)
+}
   const handleNavigate = (direction) => {
     navigate(`/${direction}`)
   }
@@ -90,12 +99,21 @@ const Home = () => {
               <h2>¿A dónde puedo llamar?</h2>
               <h3>Líneas en tu localidad:</h3>
               <div className='mainHome__phoneLinesContainer'>
+              <select  value={locations} onChange={ (event) =>  cambio(event.target.value)  }>
+                {
+                  category.map((element, index)=>(
+                    <option key={index} >{element.label}</option>
+                  ))
+
+                
+                }
+              </select>
               {
                     ubication.map((element, index)=>{
                   
                       if(element.linea1 && !element.linea2 && !element.linea3){
                  
-                       return <article>
+                       return <article key={index}>
                   <img src={phoneIcon} alt="Phone icon" />
                 
                       <div className='mainHome__phoneLineInfo' >
@@ -110,7 +128,7 @@ const Home = () => {
               
                 
               }if(element.linea1 && element.linea2 && !element.linea3){
-                return <> <article>
+                return <> <article key={index}>
                   <img src={phoneIcon} alt="Phone icon" />
                 
                       <div className='mainHome__phoneLineInfo' >
@@ -122,7 +140,7 @@ const Home = () => {
                    
                 
                 </article>
-                <article>
+                <article key={index+1}>
                   <img src={phoneIcon} alt="Phone icon" />
                 
                       <div className='mainHome__phoneLineInfo' >
@@ -136,7 +154,7 @@ const Home = () => {
                 </article>
                 </>
               }else{
-                return <> <article>
+                return <> <article key={index}>
                   <img src={phoneIcon} alt="Phone icon" />
                 
                       <div className='mainHome__phoneLineInfo' >
@@ -148,7 +166,7 @@ const Home = () => {
                    
                 
                 </article>
-                <article>
+                <article key={index+1}>
                   <img src={phoneIcon} alt="Phone icon" />
                 
                       <div className='mainHome__phoneLineInfo' >
@@ -160,7 +178,7 @@ const Home = () => {
                    
                 
                 </article>
-                <article>
+                <article key={index+2}>
                   <img src={phoneIcon} alt="Phone icon" />
                 
                       <div className='mainHome__phoneLineInfo' >
