@@ -27,6 +27,7 @@ const Home = () => {
   const { places } = useSelector((store) => store.placesStore);
   const [locations, setLocations] = useState({})
   const [ubication, setUbication] = useState([])
+  const [placesF, setPlaces] = useState([])
   useEffect(() => {
     getUserLocation()
     dispatch(actionFillPhoneLinesAsync())
@@ -46,18 +47,17 @@ const Home = () => {
             let location = data.results[0].address_components
             
           const tempLocations = location.find((element)=>{return element.long_name == "Carepa" || element.long_name == "Medellín" ||  element.long_name =="Marinilla"})
-          console.log(tempLocations)
+          console.log(tempLocations.long_name)
             setLocations(tempLocations.long_name)
             console.log(locations)
-
-            const filtrado = phoneLines.filter((item) =>
-            // item.lineLocation.toLowerCase().includes(tempLocation.short_name.toLowerCase())
-            item.lineLocation.toLowerCase().includes(tempLocations.long_name.toLowerCase())
-          );
-       
+            console.log(location)
+            console.log(places[0].placeLocation)
+            const filtrado = phoneLines.filter((item) => item.lineLocation.toLowerCase().includes(tempLocations.long_name.toLowerCase()) );
+          const filtradoPlaces = places.filter((item) => item.placeLocation.toLowerCase().includes(tempLocations.long_name.toLowerCase()));
+         
           console.log(filtrado)
           setUbication(filtrado)
-
+setPlaces(filtradoPlaces)
           console.log(ubication)
 
         })
@@ -99,7 +99,6 @@ const cambio =( ubi)=>{
             <div className='mainHome__phoneLinesBLLeft'>
               <h2>¿A dónde puedo llamar?</h2>
               <h3>Líneas en tu localidad:</h3>
-              <div className='mainHome__phoneLinesContainer'>
               <div className='mainHome__selectContainer'>
               <select  value={locations} onChange={ (event) =>  cambio(event.target.value)  }>
                 {
@@ -109,6 +108,8 @@ const cambio =( ubi)=>{
                 }
               </select>
               </div>
+              <div className='mainHome__phoneLinesContainer'>
+             
               {
                     ubication.map((element, index)=>{
                   
@@ -258,34 +259,60 @@ const cambio =( ubi)=>{
           <div className='mainHome__placesByLocationContainer container'>
             <h2>Lugares de atención psicológica en tu localidad</h2>
             <div className='mainHome__placesContainer'>
-              <article>
+            {
+              placesF.map((element, index)=>{
+                if(element.lugar1 && !element.lugar2){
+
+               return <article>
                 <img src={locationIcon} alt="Icon location" />
-                <h4>Comuna 1 popular - casa futuro</h4>
-                <p>Carrera 42B #107B - 47 / Popular 1.</p>
-                <p>Horario de atención lunes a viernes de 9am a 4pm/ sábados de 9am a 12pm.</p>
-                <p>Número: 322 858 8633</p>
+                <h4>{element.lugar1.name}</h4>
+                <p>{element.lugar1.address}.</p>
+                <p>{element.lugar1.hour}</p>
+                <p>Número: {element.lugar1.phone}</p>
+              </article>
+            }if(element.lugar1 && element.lugar2 && !element.lugar3){
+              return <> <article>
+                <img src={locationIcon} alt="Icon location" />
+                <h4>{element.lugar1.name}</h4>
+                <p>{element.lugar1.address}.</p>
+                <p>{element.lugar1.hour}</p>
+                <p>Número: {element.lugar1.phone}</p>
               </article>
               <article>
                 <img src={locationIcon} alt="Icon location" />
-                <h4>Comuna 1 popular - casa futuro</h4>
-                <p>Carrera 42B #107B - 47 / Popular 1.</p>
-                <p>Horario de atención lunes a viernes de 9am a 4pm/ sábados de 9am a 12pm.</p>
-                <p>Número: 322 858 8633</p>
+                <h4>{element.lugar2.name}</h4>
+                <p>{element.lugar2.address}.</p>
+                <p>{element.lugar2.hour}</p>
+                <p>Número: {element.lugar2.phone}</p>
+              </article>
+              </> }
+              else{
+                return <> <article>
+                <img src={locationIcon} alt="Icon location" />
+                <h4>{element.lugar1.name}</h4>
+                <p>{element.lugar1.address}.</p>
+                <p>{element.lugar1.hour}</p>
+                <p>Número: {element.lugar1.phone}</p>
               </article>
               <article>
                 <img src={locationIcon} alt="Icon location" />
-                <h4>Comuna 1 popular - casa futuro</h4>
-                <p>Carrera 42B #107B - 47 / Popular 1.</p>
-                <p>Horario de atención lunes a viernes de 9am a 4pm/ sábados de 9am a 12pm.</p>
-                <p>Número: 322 858 8633</p>
+                <h4>{element.lugar2.name}</h4>
+                <p>{element.lugar2.address}.</p>
+                <p>{element.lugar2.hour}</p>
+                <p>Número: {element.lugar2.phone}</p>
               </article>
               <article>
                 <img src={locationIcon} alt="Icon location" />
-                <h4>Comuna 1 popular - casa futuro</h4>
-                <p>Carrera 42B #107B - 47 / Popular 1.</p>
-                <p>Horario de atención lunes a viernes de 9am a 4pm/ sábados de 9am a 12pm.</p>
-                <p>Número: 322 858 8633</p>
+                <h4>{element.lugar3.name}</h4>
+                <p>{element.lugar3.address}.</p>
+                <p>{element.lugar3.hour}</p>
+                <p>Número: {element.lugar3.phone}</p>
               </article>
+              </>
+              }
+            })
+            }
+           
             </div>
           </div>
         </section>
