@@ -1,7 +1,9 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
+import Exercises from '../components/exercises/Exercises'
 import FirstPage from '../components/firstPage/FirstPage'
-import Main from '../components/Main'
+import Home from '../components/home/Home'
+import Information from '../components/information/Information'
 import Questionnaire from '../components/questionnaire/Questionnaire'
 
 const DashboardRouter = () => {
@@ -9,7 +11,9 @@ const DashboardRouter = () => {
     <Routes>
         <Route path="pageOne" element={<FirstPage />} />
         <Route path="questionnaire" element={<Questionnaire />} />
-        <Route path='home' element={<Main />} />
+        <Route path='home' element={<Home />} />
+        <Route path='exercises' element={<Exercises />} />
+        <Route path='information' element={<Information />} />
     </Routes>
   )
 }

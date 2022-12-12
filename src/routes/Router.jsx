@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import FirstPage from '../components/firstPage/FirstPage';
 import Login from '../components/login/Login';
-import Main from '../components/Main';
 import Questionnaire from '../components/questionnaire/Questionnaire';
 import Register from '../components/register/Register';
 import { auth } from '../firebase/firebaseConfig';

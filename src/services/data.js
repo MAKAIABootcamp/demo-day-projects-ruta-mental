@@ -15,7 +15,7 @@ export const loginProvider = [
 
 export const questionnaire = [
   {
-    question: "¿En que rango de edad te encuentras?",
+    question: "¿En qué rango de edad te encuentras?",
       options: {
         option1: "De 6 a 11 años",
         option2: "De 12 a 18 años",
@@ -25,7 +25,7 @@ export const questionnaire = [
       }
   },
   {
-    question: "Con que genero te identificas",
+    question: "Con qué género te identificas",
     options: {
       option1: "Masculino",
       option2: "Femenino",
@@ -34,7 +34,7 @@ export const questionnaire = [
     }
   },
   {
-    question: "¿Actualmente estas pasando por una de estas dificultades?",
+    question: "¿Actualmente estás pasando por una de estas dificultades?",
     options: {
       option1: "Familiar (Conflictos, maltrato, abuso)",
       option2: "Pareja (Ruptura, conflictos, duelo)",
@@ -53,13 +53,13 @@ export const questionnaire = [
     }
   },
   {
-    question: "¿Que acercamiento tienes con las drogas?",
+    question: "¿Qué acercamiento tienes con las drogas?",
     options: {
       option1: "No consumo",
       option2: "Consumo ocasional (Con poca frecuencia)",
-      option2: "Consumo habitual (Con frecuencia)",
-      option3: "Consumo compulsivo (Consumo incontrolado)",
-      option4: "Policonsumo (Consumo frecuente de más de una sustancia)"
+      option3: "Consumo habitual (Con frecuencia)",
+      option4: "Consumo compulsivo (Consumo incontrolado)",
+      option5: "Policonsumo (Consumo frecuente de más de una sustancia)"
     }
   },
 ]
