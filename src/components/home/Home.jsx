@@ -51,7 +51,8 @@ const Home = () => {
             console.log(locations)
 
             const filtrado = phoneLines.filter((item) =>
-            item.lineLocation.toLowerCase().includes(locations.toLowerCase())
+            // item.lineLocation.toLowerCase().includes(tempLocation.short_name.toLowerCase())
+            item.lineLocation.toLowerCase().includes(tempLocations.long_name.toLowerCase())
           );
        
           console.log(filtrado)
