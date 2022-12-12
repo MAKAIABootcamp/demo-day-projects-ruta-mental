@@ -15,6 +15,7 @@ import { actionFillPhoneLinesAsync } from '../../redux/actions/phoneLinesActions
 import { actionFillPlacesAsync } from '../../redux/actions/placesActions'
 import Navbar from '../navbar/Navbar'
 import { getUserLocation } from '../../services/getLocation'
+import { category } from '../../services/data'
 
 const Home = () => {
   const apiKey = 'AIzaSyD6PZyuQRcFcGpMQNZptnHLaE31CaIEkTM'
@@ -62,6 +63,14 @@ const Home = () => {
 }
 
 
+const cambio =( ubi)=>{
+  const filtrado = phoneLines.filter((item) =>
+  item.lineLocation.toLowerCase().includes(ubi.toLowerCase()))
+  console.log(filtrado)
+  setUbication(filtrado)
+  setLocations(ubi)
+  console.log(ubication)
+}
   const handleNavigate = (direction) => {
     navigate(`/${direction}`)
   }
@@ -89,6 +98,15 @@ const Home = () => {
               <h2>¿A dónde puedo llamar?</h2>
               <h3>Líneas en tu localidad:</h3>
               <div className='mainHome__phoneLinesContainer'>
+              <select  value={locations} onChange={ (event) =>  cambio(event.target.value)  }>
+                {
+                  category.map((element, index)=>(
+                    <option key={index} >{element.label}</option>
+                  ))
+
+                
+                }
+              </select>
               {
                     ubication.map((element, index)=>{
                   
