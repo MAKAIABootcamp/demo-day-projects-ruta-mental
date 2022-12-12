@@ -1,4 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useEffect,useState } from 'react'
+import axios from "axios"
+
 import './style.scss'
 import logo from '../../assets/images/logoImageWhite.png'
 import logoFooter from '../../assets/images/logoImage.png'
@@ -16,12 +18,16 @@ import Navbar from '../navbar/Navbar'
 import { getUserLocation } from '../../services/getLocation'
 
 const Home = () => {
+  const apiKey = 'AIzaSyD6PZyuQRcFcGpMQNZptnHLaE31CaIEkTM'
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const user = useSelector((store) => store.userStore);
   const { phoneLines } = useSelector((store) => store.phoneLinesStore);
   const { places } = useSelector((store) => store.placesStore);
+  const [locations, setLocations] = useState({})
+  const [ubication, setUbication] = useState([])
   useEffect(() => {
+
     dispatch(actionFillPhoneLinesAsync())
     dispatch(actionFillPlacesAsync())
     console.log(user)
@@ -30,8 +36,32 @@ const Home = () => {
   }, [dispatch])
   useEffect(() => {
     getUserLocation()
+    // const location = getUserLocation()
+    // console.log(location)
   }, [])
-  
+  const getUserLocation = () => {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(async (position) => {
+            console.log(position)
+            let { data } = await axios.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + position.coords.latitude + "," + position.coords.longitude + "&sensor=false" + "&key=" + apiKey)
+            console.log(data)
+            const location = data.results[0].address_components[2].short_name;
+           
+            setLocations(location)
+            console.log(location)
+
+            const filterdPaletas = phoneLines.filter((item) =>
+            item.lineLocation.toLowerCase().includes(location.toLowerCase())
+          );
+          console.log(filterdPaletas)
+          setUbication(filterdPaletas)
+
+          console.log(ubication)
+
+        })
+    }
+}
+
 
   const handleNavigate = (direction) => {
     navigate(`/${direction}`)
@@ -52,47 +82,111 @@ const Home = () => {
         </Link>
       </header>
       <main className='mainHome'>
-        <div className='mainHome__section1Container container'>
+  
+        <div className='mainHome__section1Container container' >
           <h2>Aprende cómo superar una crisis, mejorar tus habilidades psicológicas y encontrar acompañamiento.</h2>
           <section className='mainHome__phoneLinesBL' id='mainHome__phoneLinesBL'>
             <div className='mainHome__phoneLinesBLLeft'>
               <h2>¿A dónde puedo llamar?</h2>
               <h3>Líneas en tu localidad:</h3>
               <div className='mainHome__phoneLinesContainer'>
-                <article>
+              {
+                    ubication.map((element, index)=>{
+                  
+                      if(element.linea1 && !element.linea2 && !element.linea3){
+                 
+                       return <article>
                   <img src={phoneIcon} alt="Phone icon" />
-                  <div className='mainHome__phoneLineInfo'>
-                    <h4>Número Único de Seguridad y Emergencias</h4>
-                    <p>Número: <span>123 Social</span></p>
-                    <p className='mainHome__phoneLineDescription'>Servicios de información, orientación, asesoría. intervención en crisis y verificación en campo a población vulnerable en situación de riesgo y que vive emergencias de tipo personal, familiar y/o social.</p>
-                    <p>Atención: 24 horas</p>
+                
+                      <div className='mainHome__phoneLineInfo' >
+                    <h4>{element.linea1.name}</h4>
+                    <p>Número: <span>{element.linea1.phone}</span></p>
+                    <p className='mainHome__phoneLineDescription'>{element.linea1.description}</p>
+                    <p>Atención: {element.linea1.hour}</p>
                   </div>
+                   
+                
+                </article>
+              
+                
+              }if(element.linea1 && element.linea2 && !element.linea3){
+                return <> <article>
+                  <img src={phoneIcon} alt="Phone icon" />
+                
+                      <div className='mainHome__phoneLineInfo' >
+                    <h4>{element.linea1.name}</h4>
+                    <p>Número: <span>{element.linea1.phone}</span></p>
+                    <p className='mainHome__phoneLineDescription'>{element.linea1.description}</p>
+                    <p>Atención: {element.linea1.hour}</p>
+                  </div>
+                   
+                
                 </article>
                 <article>
                   <img src={phoneIcon} alt="Phone icon" />
-                  <div className='mainHome__phoneLineInfo'>
-                    <h4>Número Único de Seguridad y Emergencias</h4>
-                    <p>Número: <span>123 Social</span></p>
-                    <p className='mainHome__phoneLineDescription'>Servicios de información, orientación, asesoría. intervención en crisis y verificación en campo a población vulnerable en situación de riesgo y que vive emergencias de tipo personal, familiar y/o social.</p>
-                    <p>Atención: 24 horas</p>
+                
+                      <div className='mainHome__phoneLineInfo' >
+                    <h4>{element.linea2.name}</h4>
+                    <p>Número: <span>{element.linea2.phone}</span></p>
+                    <p className='mainHome__phoneLineDescription'>{element.linea2.description}</p>
+                    <p>Atención: {element.linea2.hour}</p>
                   </div>
+                   
+                
+                </article>
+                </>
+              }else{
+                return <> <article>
+                  <img src={phoneIcon} alt="Phone icon" />
+                
+                      <div className='mainHome__phoneLineInfo' >
+                    <h4>{element.linea1.name}</h4>
+                    <p>Número: <span>{element.linea1.phone}</span></p>
+                    <p className='mainHome__phoneLineDescription'>{element.linea1.description}</p>
+                    <p>Atención: {element.linea1.hour}</p>
+                  </div>
+                   
+                
                 </article>
                 <article>
                   <img src={phoneIcon} alt="Phone icon" />
-                  <div className='mainHome__phoneLineInfo'>
-                    <h4>Número Único de Seguridad y Emergencias</h4>
-                    <p>Número: <span>123 Social</span></p>
-                    <p className='mainHome__phoneLineDescription'>Servicios de información, orientación, asesoría. intervención en crisis y verificación en campo a población vulnerable en situación de riesgo y que vive emergencias de tipo personal, familiar y/o social.</p>
-                    <p>Atención: 24 horas</p>
+                
+                      <div className='mainHome__phoneLineInfo' >
+                    <h4>{element.linea2.name}</h4>
+                    <p>Número: <span>{element.linea2.phone}</span></p>
+                    <p className='mainHome__phoneLineDescription'>{element.linea2.description}</p>
+                    <p>Atención: {element.linea2.hour}</p>
                   </div>
+                   
+                
                 </article>
+                <article>
+                  <img src={phoneIcon} alt="Phone icon" />
+                
+                      <div className='mainHome__phoneLineInfo' >
+                    <h4>{element.linea3.name}</h4>
+                    <p>Número: <span>{element.linea3.phone}</span></p>
+                    <p className='mainHome__phoneLineDescription'>{element.linea3.description}</p>
+                    <p>Atención: {element.linea3.hour}</p>
+                  </div>
+                   
+                
+                </article>
+                </>
+              }
+
+              })
+              }
+                
               </div>
             </div>
+          
             <div className='mainHome__phoneLinesBLRight'>
               <img src={illustrationCallCenter} alt="Illustration call center" />
             </div>
           </section>
         </div>
+                    
         <section className='mainHome__nationalLines'>
           <div className='mainHome__nationalLinesContainer container'>
             <p>Desde cualquier ciudad del país marca 192, opción 4</p>
