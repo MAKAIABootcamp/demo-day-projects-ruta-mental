@@ -16,6 +16,7 @@ import { actionFillPhoneLinesAsync } from '../../redux/actions/phoneLinesActions
 import { actionFillPlacesAsync } from '../../redux/actions/placesActions'
 import Navbar from '../navbar/Navbar'
 import { getUserLocation } from '../../services/getLocation'
+import { category } from '../../services/data'
 
 const Home = () => {
   const apiKey = 'AIzaSyD6PZyuQRcFcGpMQNZptnHLaE31CaIEkTM'
@@ -34,10 +35,7 @@ const Home = () => {
     console.log(phoneLines)
     console.log(places)
   }, [dispatch])
-  useEffect(() => {
-    
-   
-  }, [])
+
   const getUserLocation = () => {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(async (position) => {
@@ -47,13 +45,14 @@ const Home = () => {
         
             let location = data.results[0].address_components
             
-            location.find((element)=>{element.long_name = "Carepa" || "Marinilla" || "Medellín"})
-      
-            setLocations(location[0].long_name)
+          const tempLocations = location.find((element)=>{return element.long_name == "Carepa" || element.long_name == "Medellín" ||  element.long_name =="Marinilla"})
+          console.log(tempLocations)
+            setLocations(tempLocations.long_name)
             console.log(locations)
 
             const filtrado = phoneLines.filter((item) =>
-            item.lineLocation.toLowerCase().includes(locations.toLowerCase())
+            // item.lineLocation.toLowerCase().includes(tempLocation.short_name.toLowerCase())
+            item.lineLocation.toLowerCase().includes(tempLocations.long_name.toLowerCase())
           );
        
           console.log(filtrado)
@@ -66,6 +65,14 @@ const Home = () => {
 }
 
 
+const cambio =( ubi)=>{
+  const filtrado = phoneLines.filter((item) =>
+  item.lineLocation.toLowerCase().includes(ubi.toLowerCase()))
+  console.log(filtrado)
+  setUbication(filtrado)
+  setLocations(ubi)
+  console.log(ubication)
+}
   const handleNavigate = (direction) => {
     navigate(`/${direction}`)
   }
@@ -93,6 +100,15 @@ const Home = () => {
               <h2>¿A dónde puedo llamar?</h2>
               <h3>Líneas en tu localidad:</h3>
               <div className='mainHome__phoneLinesContainer'>
+              <select  value={locations} onChange={ (event) =>  cambio(event.target.value)  }>
+                {
+                  category.map((element, index)=>(
+                    <option key={index} >{element.label}</option>
+                  ))
+
+                
+                }
+              </select>
               {
                     ubication.map((element, index)=>{
                   
@@ -151,7 +167,7 @@ const Home = () => {
                    
                 
                 </article>
-                <article>
+                <article key={index+1}>
                   <img src={phoneIcon} alt="Phone icon" />
                 
                       <div className='mainHome__phoneLineInfo' >
@@ -163,7 +179,7 @@ const Home = () => {
                    
                 
                 </article>
-                <article key={index+1}>
+                <article key={index+2}>
                   <img src={phoneIcon} alt="Phone icon" />
                 
                       <div className='mainHome__phoneLineInfo' >
