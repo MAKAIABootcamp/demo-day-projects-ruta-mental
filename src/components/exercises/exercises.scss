@@ -63,6 +63,7 @@ $fontFamily: 'Poppins';
         justify-content: start;
         padding-left: 20px;
         color: #FFFFFF;
+        z-index: 100;
         cursor: pointer;
         &:hover{
             width: 165px;
@@ -81,6 +82,7 @@ $fontFamily: 'Poppins';
         align-items: center;
         justify-content: start;
         padding-left: 20px;
+        z-index: 100;
         color: #FFFFFF;
         cursor: pointer;
         &:hover{
@@ -203,6 +205,7 @@ $fontFamily: 'Poppins';
             height: 334px;
             border-radius: 20px;
             position: relative;
+            z-index: 1;
             div{
                 width: 65px;
                 height: 65px;
@@ -222,6 +225,8 @@ $fontFamily: 'Poppins';
             width: 445.33px;
             height: 334px;
             border-radius: 20px;
+            position: relative;
+            z-index: 1;
         }
     }
     &__ex2Info{

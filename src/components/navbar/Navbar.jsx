@@ -28,7 +28,7 @@ const NavBar = () => {
     </div>
     <div className='navbar__links'>
       <CustomLink to='/home'>Inicio</CustomLink>
-      <CustomLink to='/information'>Información</CustomLink>
+      {/* <CustomLink to='/information'>Información</CustomLink> */}
       <CustomLink to='/exercises'>Ejercicios</CustomLink>
       <button onClick={logOut}>Cerrar Sesión</button>
     </div>
