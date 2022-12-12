@@ -45,14 +45,15 @@ const Home = () => {
             console.log(data)
         
             let location = data.results[0].address_components
-            
-            location.find((element)=>{element.long_name = "Carepa" || "Marinilla" || "Medellín"})
+            console.log(location)
+            const tempLocation = location.find((element)=>{return element.long_name == "Medellín"})
       
-            setLocations(location[0].long_name)
-            console.log(locations)
-
+            // setLocations(location[0].long_name)
+            console.log(tempLocation.short_name)
+            const cityName = 'Medellin'
             const filtrado = phoneLines.filter((item) =>
-            item.lineLocation.toLowerCase().includes(locations.toLowerCase())
+            // item.lineLocation.toLowerCase().includes(tempLocation.short_name.toLowerCase())
+            item.lineLocation.toLowerCase().includes(cityName.toLowerCase())
           );
        
           console.log(filtrado)
