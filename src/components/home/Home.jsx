@@ -3,6 +3,7 @@ import axios from "axios"
 
 import './style.scss'
 import logo from '../../assets/images/logoImageWhite.png'
+import logoFooter from '../../assets/images/logoImage.png'
 import fondo from '../../assets/images/fondo.png'
 import phoneIcon from '../../assets/images/phoneIcon.png'
 import illustrationCallCenter from '../../assets/images/illustrationCallCenter.png'
@@ -104,16 +105,14 @@ const cambio =( ubi)=>{
                 {
                   category.map((element, index)=>(
                     <option key={index} >{element.label}</option>
-                  ))
-
-                
+                  ))               
                 }
               </select>
               </div>
               {
                     ubication.map((element, index)=>{
                   
-                      if(element.linea1 && !element.linea2 && !element.linea3){
+                      if(element.linea1 && !element.linea2 && !element.linea3 && !element.linea4){
                  
                        return <article key={index}>
                   <img src={phoneIcon} alt="Phone icon" />
@@ -121,38 +120,72 @@ const cambio =( ubi)=>{
                       <div className='mainHome__phoneLineInfo' >
                     <h4>{element.linea1.name}</h4>
                     <p>Número: <span>{element.linea1.phone}</span></p>
+                    <p><span>{element.linea1.phone2}</span></p>
                     <p className='mainHome__phoneLineDescription'>{element.linea1.description}</p>
-                    <p>Atención: {element.linea1.hour}</p>
-                  </div>
-                   
-                
+                    <p>{element.linea1.hour}</p>
+                  </div>               
                 </article>
-              
-                
-              }if(element.linea1 && element.linea2 && !element.linea3){
+               
+              }if(element.linea1 && element.linea2 && !element.linea3 && !element.linea4){
                 return <> <article key={index}>
                   <img src={phoneIcon} alt="Phone icon" />
                 
                       <div className='mainHome__phoneLineInfo' >
                     <h4>{element.linea1.name}</h4>
                     <p>Número: <span>{element.linea1.phone}</span></p>
+                    <p><span>{element.linea1.phone2}</span></p>
                     <p className='mainHome__phoneLineDescription'>{element.linea1.description}</p>
-                    <p>Atención: {element.linea1.hour}</p>
+                    <p>{element.linea1.hour}</p>
                   </div>
-                   
-                
                 </article>
+
                 <article key={index+1}>
                   <img src={phoneIcon} alt="Phone icon" />
                 
                       <div className='mainHome__phoneLineInfo' >
                     <h4>{element.linea2.name}</h4>
                     <p>Número: <span>{element.linea2.phone}</span></p>
+                    <p><span>{element.linea2.phone2}</span></p>
                     <p className='mainHome__phoneLineDescription'>{element.linea2.description}</p>
-                    <p>Atención: {element.linea2.hour}</p>
-                  </div>
-                   
+                    <p>{element.linea2.hour}</p>
+                  </div>               
+                </article>
+                </>
+
+              }if(element.linea1 && element.linea2 && element.linea3 && !element.linea4){
+                return <> <article key={index}>
+                  <img src={phoneIcon} alt="Phone icon" />
                 
+                      <div className='mainHome__phoneLineInfo' >
+                    <h4>{element.linea1.name}</h4>
+                    <p>Número: <span>{element.linea1.phone}</span></p>
+                    <p><span>{element.linea1.phone2}</span></p>
+                    <p className='mainHome__phoneLineDescription'>{element.linea1.description}</p>
+                    <p>{element.linea1.hour}</p>
+                  </div>                                 
+                </article>
+
+                <article key={index+1}>
+                  <img src={phoneIcon} alt="Phone icon" />              
+                      <div className='mainHome__phoneLineInfo' >
+                    <h4>{element.linea2.name}</h4>
+                    <p>Número: <span>{element.linea2.phone}</span></p>
+                    <p><span>{element.linea2.phone2}</span></p>
+                    <p className='mainHome__phoneLineDescription'>{element.linea2.description}</p>
+                    <p>{element.linea2.hour}</p>
+                  </div>                
+                </article>
+
+                <article key={index+2}>
+                  <img src={phoneIcon} alt="Phone icon" />
+                
+                      <div className='mainHome__phoneLineInfo' >
+                    <h4>{element.linea3.name}</h4>
+                    <p>Número: <span>{element.linea3.phone}</span></p>
+                    <p><span>{element.linea3.phone2}</span></p>
+                    <p className='mainHome__phoneLineDescription'>{element.linea3.description}</p>
+                    <p>{element.linea3.hour}</p>
+                  </div>
                 </article>
                 </>
               }else{
@@ -162,42 +195,50 @@ const cambio =( ubi)=>{
                       <div className='mainHome__phoneLineInfo' >
                     <h4>{element.linea1.name}</h4>
                     <p>Número: <span>{element.linea1.phone}</span></p>
+                    <p><span>{element.linea1.phone2}</span></p>
                     <p className='mainHome__phoneLineDescription'>{element.linea1.description}</p>
-                    <p>Atención: {element.linea1.hour}</p>
-                  </div>
-                   
-                
+                    <p>{element.linea1.hour}</p>
+                  </div>               
                 </article>
+
                 <article key={index+1}>
                   <img src={phoneIcon} alt="Phone icon" />
                 
                       <div className='mainHome__phoneLineInfo' >
                     <h4>{element.linea2.name}</h4>
                     <p>Número: <span>{element.linea2.phone}</span></p>
+                    <p><span>{element.linea2.phone2}</span></p>
                     <p className='mainHome__phoneLineDescription'>{element.linea2.description}</p>
-                    <p>Atención: {element.linea2.hour}</p>
-                  </div>
-                   
-                
+                    <p>{element.linea2.hour}</p>
+                  </div>               
                 </article>
+
                 <article key={index+2}>
                   <img src={phoneIcon} alt="Phone icon" />
                 
                       <div className='mainHome__phoneLineInfo' >
                     <h4>{element.linea3.name}</h4>
                     <p>Número: <span>{element.linea3.phone}</span></p>
+                    <p><span>{element.linea3.phone2}</span></p>
                     <p className='mainHome__phoneLineDescription'>{element.linea3.description}</p>
-                    <p>Atención: {element.linea3.hour}</p>
+                    <p>{element.linea3.hour}</p>
                   </div>
-                   
-                
+                </article>
+
+                <article key={index+3}>
+                  <img src={phoneIcon} alt="Phone icon" />               
+                      <div className='mainHome__phoneLineInfo' >
+                    <h4>{element.linea4.name}</h4>
+                    <p>Número: <span>{element.linea4.phone}</span></p>
+                    <p><span>{element.linea4.phone2}</span></p>
+                    <p className='mainHome__phoneLineDescription'>{element.linea4.description}</p>
+                    <p>{element.linea4.hour}</p>
+                  </div>
                 </article>
                 </>
               }
-
               })
-              }
-                
+              }               
               </div>
             </div>
           
@@ -263,7 +304,7 @@ const cambio =( ubi)=>{
       <footer>
         <div className='footer'>
           <div className='footer__content'>
-            <img src={logo} className='footer__logo' />
+            <img src={logoFooter} className='footer__logo' />
             <p>Ruta Mental</p>
           </div>
           <div>
@@ -279,3 +320,4 @@ const cambio =( ubi)=>{
 }
 
 export default Home
+

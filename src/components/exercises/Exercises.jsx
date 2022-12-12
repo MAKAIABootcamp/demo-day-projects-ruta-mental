@@ -12,6 +12,7 @@ import './exercises.scss'
 import { Link } from 'react-scroll'
 
 const Exercises = () => {
+
   return (
     <div className='bodyExercises'>
         <NavBar />
@@ -134,8 +135,8 @@ const Exercises = () => {
             </div>
             <div className='mainExercises__howToStart container'>
               <div>
-                <h3>¿Como empezar a practicarlo?</h3>
-                <p>Sentarse cómodamente, cerrar los ojos y colocar una mano sobre el abdomen, con el dedo meñique justo encima del ombligo. El abdomen debe elevarse con cada inspiración, Al espirar, el abdomen vuelve a su posición original. Puede ser de ayuda intentar presionar el "cinturón" con el abdomen al inspirar. Si no puede respirar diafragmáticamente en posición sentado, puede comenzar tumbado boca arriba. Si es necesario, puede colocar un pequeño libro sobre su abdomen y comprobar cómo sube y baja.</p>
+                <h3>¿Cómo empezar a practicarlo?</h3>
+                <p>Sentarse cómodamente, cerrar los ojos y colocar una mano sobre el abdomen, con el dedo meñique justo encima del ombligo. El abdomen debe elevarse con cada inspiración. Al espirar, el abdomen vuelve a su posición original. Puede ser de ayuda intentar presionar el "cinturón" con el abdomen al inspirar. Si no puede respirar diafragmáticamente en posición sentado, puede comenzar tumbado boca arriba. Si es necesario, puede colocar un pequeño libro sobre su abdomen y comprobar cómo sube y baja.</p>
               </div>
             </div>
             <div className='mainExercises__breathEx2 container'>
