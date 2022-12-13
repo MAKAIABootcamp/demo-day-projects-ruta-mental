@@ -35,7 +35,7 @@ const Home = () => {
   const [placesF, setPlaces] = useState([])
   const [problemComponent, setProblemComponent] = useState(undefined)
   const [isSuicProblem, setIsSuicProblem] = useState(false)
-  const [formResponses, setFormResponses] = useState()
+  const [formResponses, setFormResponses] = useState(form)
   useEffect(() => {
     getUserLocation()
     dispatch(actionFillPhoneLinesAsync())
@@ -45,16 +45,20 @@ const Home = () => {
     console.log(places)
   }, [dispatch])
   useEffect(() => {
-    filterInfoProblem()
     console.log(form)
     const tempFormResponses = JSON.parse(localStorage.getItem('form'))
     console.log(tempFormResponses)
     dispatch(addFormSync([tempFormResponses]))
+    setFormResponses([tempFormResponses])
+    console.log(tempFormResponses)
+    filterInfoProblem(tempFormResponses)
   }, [dispatch])
 
-  const filterInfoProblem = () => {
-    // const problemType = form[0][2]
-    const problemType = 'Familiar (Conflictos, maltrato, abuso)'
+  const filterInfoProblem = (tempFormResponses) => {
+    const problemType = tempFormResponses[2]
+    console.log(tempFormResponses)
+    console.log(tempFormResponses[2])
+    // const problemType = 'Familiar (Conflictos, maltrato, abuso)'
     let tempSuicResponse
     let tempProblem
     console.log(problemType)
@@ -71,12 +75,12 @@ const Home = () => {
       case 'Social (Introversión, adaptación, cultural, bullying)':
         tempProblem = ('Social')
         break
-      case 'Físico (Enfermedad, autoestima':
+      case 'Físico (Enfermedad, autoestima)':
         tempProblem = ('Fisico')
         break
     }
-    // const suicResponse = form[0][3] 
-    const suicResponse = 'He pensado en el suicidio'
+    const suicResponse = tempFormResponses[3] 
+    // const suicResponse = 'He pensado en el suicidio'
     if (suicResponse == 'He pensado en el suicidio' || suicResponse == 'He pensado y lo he intentado o planeado' || suicResponse == 'Me he autolesionado') {
       tempSuicResponse = true
     } else {
