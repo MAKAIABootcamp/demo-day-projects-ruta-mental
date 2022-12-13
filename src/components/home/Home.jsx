@@ -2,7 +2,6 @@ import React, { useEffect,useState } from 'react'
 import axios from "axios"
 
 import './style.scss'
-import logo from '../../assets/images/logoImageWhite.png'
 import fondo from '../../assets/images/fondo.png'
 import phoneIcon from '../../assets/images/phoneIcon.png'
 import illustrationCallCenter from '../../assets/images/illustrationCallCenter.png'
@@ -13,10 +12,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-scroll'
 import { actionFillPhoneLinesAsync } from '../../redux/actions/phoneLinesActions'
 import { actionFillPlacesAsync } from '../../redux/actions/placesActions'
+import { addFormSync } from '../../redux/actions/formActions'
 import Navbar from '../navbar/Navbar'
-import { getUserLocation } from '../../services/getLocation'
 import { category } from '../../services/data'
 import Footer from '../footer/Footer'
+import Pareja from '../infoProblems/Pareja'
+import Familiar from '../infoProblems/Familiar'
+import Academico from '../infoProblems/Academico'
+import Social from '../infoProblems/Social'
+import Fisico from '../infoProblems/Fisico'
 
 const Home = () => {
   const apiKey = 'AIzaSyD6PZyuQRcFcGpMQNZptnHLaE31CaIEkTM'
@@ -25,9 +29,13 @@ const Home = () => {
   const user = useSelector((store) => store.userStore);
   const { phoneLines } = useSelector((store) => store.phoneLinesStore);
   const { places } = useSelector((store) => store.placesStore);
+  const { form } = useSelector((store) => store.formStore);
   const [locations, setLocations] = useState({})
   const [ubication, setUbication] = useState([])
   const [placesF, setPlaces] = useState([])
+  const [problemComponent, setProblemComponent] = useState(undefined)
+  const [isSuicProblem, setIsSuicProblem] = useState(false)
+  const [formResponses, setFormResponses] = useState()
   useEffect(() => {
     getUserLocation()
     dispatch(actionFillPhoneLinesAsync())
@@ -36,6 +44,49 @@ const Home = () => {
     console.log(phoneLines)
     console.log(places)
   }, [dispatch])
+  useEffect(() => {
+    filterInfoProblem()
+    console.log(form)
+    const tempFormResponses = JSON.parse(localStorage.getItem('form'))
+    console.log(tempFormResponses)
+    dispatch(addFormSync([tempFormResponses]))
+  }, [dispatch])
+
+  const filterInfoProblem = () => {
+    // const problemType = form[0][2]
+    const problemType = 'Familiar (Conflictos, maltrato, abuso)'
+    let tempSuicResponse
+    let tempProblem
+    console.log(problemType)
+    switch (problemType) {
+      case 'Familiar (Conflictos, maltrato, abuso)':
+        tempProblem = ('Familiar')
+        break
+      case 'Pareja (Ruptura, conflictos, duelo)':
+        tempProblem = ('Pareja')
+        break
+      case 'Académico (Bajo rendimiento, perdida de año o semestre)':
+        tempProblem = ('Academico')
+        break
+      case 'Social (Introversión, adaptación, cultural, bullying)':
+        tempProblem = ('Social')
+        break
+      case 'Físico (Enfermedad, autoestima':
+        tempProblem = ('Fisico')
+        break
+    }
+    // const suicResponse = form[0][3] 
+    const suicResponse = 'He pensado en el suicidio'
+    if (suicResponse == 'He pensado en el suicidio' || suicResponse == 'He pensado y lo he intentado o planeado' || suicResponse == 'Me he autolesionado') {
+      tempSuicResponse = true
+    } else {
+      tempSuicResponse = false
+    }
+    console.log(tempProblem)
+    console.log(tempSuicResponse)
+    setIsSuicProblem(tempSuicResponse)
+    setProblemComponent(tempProblem)
+  }
 
   const getUserLocation = () => {
     if (navigator.geolocation) {
@@ -80,7 +131,7 @@ const cambio =( ubi)=>{
     dispatch(actionLogoutAsync());
   };
   return (
-    <div>
+    <div className='bodyHome'>
       <header className='header'>
         <Navbar />
         <img src={fondo} className='imgFondo' />
@@ -316,22 +367,57 @@ const cambio =( ubi)=>{
             </div>
           </div>
         </section>
-        <section className='mainHome__infoSuicide'>
-          <div className='mainHome__infoSuicideContainer container'>
-            <h2>¿Piensas en el suicidio?</h2>
-            <p>Cuando parece que no vale la pena vivir, podría parecer que la única forma de encontrar alivio es por medio del suicidio. Cuando te sientes de esta manera, puede que sea difícil de creer, pero tienes otras opciones.<br /><br />Da un paso hacia atrás y separa tus emociones de tus acciones por el momento.</p>
-            <div className='mainHome__infoSuicideBoxes'>
-              <p>Reconoce que la depresión y la desesperanza pueden distorsionar tus percepciones y reducir tu habilidad para tomar buenas decisiones.</p>
-              <p>Date cuenta que los sentimientos suicidas son el resultado de problemas tratables y actúa como si hubiera otras opciones en lugar del suicidio, incluso si no las ves ahora mismo.</p>
-              <p>Tal vez no sea fácil y puede que no te sientas mejor por la noche. Aunque, eventualmente, el sentimiento de desesperación — y los pensamientos de suicidio — desaparecerán.</p>
-            </div>
-          </div>
-        </section>
+        {
+          isSuicProblem ?
+          (
+            <section className='mainHome__infoSuicide'>
+              <div className='mainHome__infoSuicideContainer container'>
+                <h2>¿Piensas en el suicidio?</h2>
+                <p>Cuando parece que no vale la pena vivir, podría parecer que la única forma de encontrar alivio es por medio del suicidio. Cuando te sientes de esta manera, puede que sea difícil de creer, pero tienes otras opciones.<br /><br />Da un paso hacia atrás y separa tus emociones de tus acciones por el momento.</p>
+                <div className='mainHome__infoSuicideBoxes'>
+                  <p>Reconoce que la depresión y la desesperanza pueden distorsionar tus percepciones y reducir tu habilidad para tomar buenas decisiones.</p>
+                  <p>Date cuenta que los sentimientos suicidas son el resultado de problemas tratables y actúa como si hubiera otras opciones en lugar del suicidio, incluso si no las ves ahora mismo.</p>
+                  <p>Tal vez no sea fácil y puede que no te sientas mejor por la noche. Aunque, eventualmente, el sentimiento de desesperación — y los pensamientos de suicidio — desaparecerán.</p>
+                </div>
+              </div>
+            </section>
+          ): <div></div>
+        }
+        {
+          problemComponent == 'Pareja' ?
+          (
+            <Pareja/>
+          ): <div></div>
+        }
+        {
+          problemComponent == 'Familiar' ?
+          (
+            <Familiar/>
+          ): <div></div>
+        }
+        {
+          problemComponent == 'Academico' ?
+          (
+            <Academico/>
+          ): <div></div>
+        }
+        {
+          problemComponent == 'Social' ?
+          (
+            <Social/>
+          ): <div></div>
+        }
+        {
+          problemComponent == 'Fisico' ?
+          (
+            <Fisico/>
+          ): <div></div>
+        }
+        
+        <Footer/>
       </main>
-      <Footer/>
     </div>
   )
 }
 
 export default Home
-
