@@ -33,7 +33,7 @@ Once reached the pre-requisites, you should go to the root folder of the project
 8. Execute the command `firebase deploy` and wait until the process return the deployed url
 
 ## Deployment URL
-- https://ruta-mental.web.app/
+https://ruta-mental.web.app/
 
 ## Authors
 [Gustavo Andrés Silva Naranjo](https://github.com/Getz-S) - [Jennifer Sofía Parra Navas](https://github.com/jenniferparra) - [Santiago Gutierrez](https://github.com/Taja34)
