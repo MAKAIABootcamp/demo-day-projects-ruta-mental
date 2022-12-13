@@ -5,7 +5,6 @@ import "./footer.scss"
 
 const Footer = () => {
   return (
-    <div>
         <div className='footer'>
           <div className='footer__content'>
             <img src={logoFooter} className='footer__logo' />
@@ -19,7 +18,6 @@ const Footer = () => {
             <a href="https://www.freepik.es/vector-gratis/ilustracion-concepto-conversacion_7118856.htm#&position=0&from_view=author%22%3EImagen"> Imagen de storyset en Freepik</a>
           </div>
         </div>
-    </div>
   )
 }
 
