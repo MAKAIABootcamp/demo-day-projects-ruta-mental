@@ -34,3 +34,6 @@ Once reached the pre-requisites, you should go to the root folder of the project
 
 ## Deployment URL
 - https://ruta-mental.web.app/
+
+## Authors
+[Gustavo Andrés Silva Naranjo](https://github.com/Getz-S) - [Jennifer Sofía Parra Navas](https://github.com/jenniferparra) - [Santiago Gutierrez](https://github.com/Taja34)
