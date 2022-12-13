@@ -37,6 +37,7 @@ const Questionnaire = () => {
         console.log(tempForm)
         dispatch(addFormSync([tempForm]))
         setResponses([])
+        localStorage.setItem('form', JSON.stringify(tempForm))
         navigate('/home')
     }
     

@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-scroll'
 import { actionFillPhoneLinesAsync } from '../../redux/actions/phoneLinesActions'
 import { actionFillPlacesAsync } from '../../redux/actions/placesActions'
+import { addFormSync } from '../../redux/actions/formActions'
 import Navbar from '../navbar/Navbar'
 import { category } from '../../services/data'
 import Footer from '../footer/Footer'
@@ -20,7 +21,6 @@ import Familiar from '../infoProblems/Familiar'
 import Academico from '../infoProblems/Academico'
 import Social from '../infoProblems/Social'
 import Fisico from '../infoProblems/Fisico'
-import { info } from 'sass'
 
 const Home = () => {
   const apiKey = 'AIzaSyD6PZyuQRcFcGpMQNZptnHLaE31CaIEkTM'
@@ -33,9 +33,9 @@ const Home = () => {
   const [locations, setLocations] = useState({})
   const [ubication, setUbication] = useState([])
   const [placesF, setPlaces] = useState([])
-  const [ProblemComponent, setProblemComponent] = useState('')
+  const [problemComponent, setProblemComponent] = useState(undefined)
   const [isSuicProblem, setIsSuicProblem] = useState(false)
-  let tempProblem
+  const [formResponses, setFormResponses] = useState(form)
   useEffect(() => {
     dispatch(actionFillPhoneLinesAsync())
     dispatch(actionFillPlacesAsync())
@@ -46,44 +46,50 @@ const Home = () => {
   }, [dispatch])
   useEffect(() => {
     console.log(form)
-    filterInfoProblem()
-    console.log(form[0][3])
-  }, [])
-  
-  const filterInfoProblem = () => {
-    if(form[0].length) {
-      const problemType = form[0][2]
-      let tempSuicResponse
-      let tempProblem
-      console.log(problemType)
-      switch (problemType) {
-        case 'Familiar (Conflictos, maltrato, abuso)':
-          tempProblem = ('Familiar')
-          break
-        case 'Pareja (Ruptura, conflictos, duelo)':
-          tempProblem = ('Pareja')
-          break
-        case 'Académico (Bajo rendimiento, perdida de año o semestre)':
-          tempProblem = ('Academico')
-          break
-        case 'Social (Introversión, adaptación, cultural, bullying)':
-          tempProblem = ('Social')
-          break
-        case 'Físico (Enfermedad, autoestima':
-          tempProblem = ('Fisico')
-          break
-      }
-      const suicResponse = form[0][3] 
-      if (suicResponse == 'He pensado en el suicidio' || suicResponse == 'He pensado y lo he intentado o planeado' || suicResponse == 'Me he autolesionado') {
-        tempSuicResponse = true
-      } else {
-        tempSuicResponse = false
-      }
-      console.log(tempProblem)
-      console.log(tempSuicResponse)
-      setIsSuicProblem(tempSuicResponse)
-      setProblemComponent(tempProblem) 
+    const tempFormResponses = JSON.parse(localStorage.getItem('form'))
+    console.log(tempFormResponses)
+    dispatch(addFormSync([tempFormResponses]))
+    setFormResponses([tempFormResponses])
+    console.log(tempFormResponses)
+    filterInfoProblem(tempFormResponses)
+  }, [dispatch])
+
+  const filterInfoProblem = (tempFormResponses) => {
+    const problemType = tempFormResponses[2]
+    console.log(tempFormResponses)
+    console.log(tempFormResponses[2])
+    // const problemType = 'Familiar (Conflictos, maltrato, abuso)'
+    let tempSuicResponse
+    let tempProblem
+    console.log(problemType)
+    switch (problemType) {
+      case 'Familiar (Conflictos, maltrato, abuso)':
+        tempProblem = ('Familiar')
+        break
+      case 'Pareja (Ruptura, conflictos, duelo)':
+        tempProblem = ('Pareja')
+        break
+      case 'Académico (Bajo rendimiento, perdida de año o semestre)':
+        tempProblem = ('Academico')
+        break
+      case 'Social (Introversión, adaptación, cultural, bullying)':
+        tempProblem = ('Social')
+        break
+      case 'Físico (Enfermedad, autoestima)':
+        tempProblem = ('Fisico')
+        break
     }
+    const suicResponse = tempFormResponses[3] 
+    // const suicResponse = 'He pensado en el suicidio'
+    if (suicResponse == 'He pensado en el suicidio' || suicResponse == 'He pensado y lo he intentado o planeado' || suicResponse == 'Me he autolesionado') {
+      tempSuicResponse = true
+    } else {
+      tempSuicResponse = false
+    }
+    console.log(tempProblem)
+    console.log(tempSuicResponse)
+    setIsSuicProblem(tempSuicResponse)
+    setProblemComponent(tempProblem)
   }
 
   const getUserLocation = () => {
@@ -384,31 +390,31 @@ const cambio =( ubi)=>{
           ): <div></div>
         }
         {
-          ProblemComponent == 'Pareja' ?
+          problemComponent == 'Pareja' ?
           (
             <Pareja/>
           ): <div></div>
         }
         {
-          ProblemComponent == 'Familiar' ?
+          problemComponent == 'Familiar' ?
           (
             <Familiar/>
           ): <div></div>
         }
         {
-          ProblemComponent == 'Academico' ?
+          problemComponent == 'Academico' ?
           (
             <Academico/>
           ): <div></div>
         }
         {
-          ProblemComponent == 'Social' ?
+          problemComponent == 'Social' ?
           (
             <Social/>
           ): <div></div>
         }
         {
-          ProblemComponent == 'Fisico' ?
+          problemComponent == 'Fisico' ?
           (
             <Fisico/>
           ): <div></div>
@@ -421,4 +427,3 @@ const cambio =( ubi)=>{
 }
 
 export default Home
-
