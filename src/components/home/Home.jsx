@@ -20,6 +20,7 @@ import Familiar from '../infoProblems/Familiar'
 import Academico from '../infoProblems/Academico'
 import Social from '../infoProblems/Social'
 import Fisico from '../infoProblems/Fisico'
+import { info } from 'sass'
 
 const Home = () => {
   const apiKey = 'AIzaSyD6PZyuQRcFcGpMQNZptnHLaE31CaIEkTM'
@@ -32,7 +33,7 @@ const Home = () => {
   const [locations, setLocations] = useState({})
   const [ubication, setUbication] = useState([])
   const [placesF, setPlaces] = useState([])
-  const [ProblemComponent, setProblemComponent] = useState(undefined)
+  const [ProblemComponent, setProblemComponent] = useState('')
   const [isSuicProblem, setIsSuicProblem] = useState(false)
   let tempProblem
   useEffect(() => {
@@ -50,37 +51,39 @@ const Home = () => {
   }, [])
   
   const filterInfoProblem = () => {
-    const problemType = form[0][2]
-    let tempSuicResponse
-    let tempProblem
-    console.log(problemType)
-    switch (problemType) {
-      case 'Familiar (Conflictos, maltrato, abuso)':
-        tempProblem = ('Familiar')
-        break
-      case 'Pareja (Ruptura, conflictos, duelo)':
-        tempProblem = ('Pareja')
-        break
-      case 'Académico (Bajo rendimiento, perdida de año o semestre)':
-        tempProblem = ('Academico')
-        break
-      case 'Social (Introversión, adaptación, cultural, bullying)':
-        tempProblem = ('Social')
-        break
-      case 'Físico (Enfermedad, autoestima':
-        tempProblem = ('Fisico')
-        break
+    if(form[0].length) {
+      const problemType = form[0][2]
+      let tempSuicResponse
+      let tempProblem
+      console.log(problemType)
+      switch (problemType) {
+        case 'Familiar (Conflictos, maltrato, abuso)':
+          tempProblem = ('Familiar')
+          break
+        case 'Pareja (Ruptura, conflictos, duelo)':
+          tempProblem = ('Pareja')
+          break
+        case 'Académico (Bajo rendimiento, perdida de año o semestre)':
+          tempProblem = ('Academico')
+          break
+        case 'Social (Introversión, adaptación, cultural, bullying)':
+          tempProblem = ('Social')
+          break
+        case 'Físico (Enfermedad, autoestima':
+          tempProblem = ('Fisico')
+          break
+      }
+      const suicResponse = form[0][3] 
+      if (suicResponse == 'He pensado en el suicidio' || suicResponse == 'He pensado y lo he intentado o planeado' || suicResponse == 'Me he autolesionado') {
+        tempSuicResponse = true
+      } else {
+        tempSuicResponse = false
+      }
+      console.log(tempProblem)
+      console.log(tempSuicResponse)
+      setIsSuicProblem(tempSuicResponse)
+      setProblemComponent(tempProblem) 
     }
-    const suicResponse = form[0][3] 
-    if (suicResponse == 'He pensado en el suicidio' || suicResponse == 'He pensado y lo he intentado o planeado' || suicResponse == 'Me he autolesionado') {
-      tempSuicResponse = true
-    } else {
-      tempSuicResponse = false
-    }
-    console.log(tempProblem)
-    console.log(tempSuicResponse)
-    setIsSuicProblem(tempSuicResponse)
-    setProblemComponent(tempProblem)
   }
 
   const getUserLocation = () => {
