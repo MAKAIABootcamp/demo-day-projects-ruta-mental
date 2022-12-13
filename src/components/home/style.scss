@@ -6,6 +6,7 @@
 $color-background: #F4F9F9;
 $color-blue-light: #CCF2F4;
 $color-blue: #A4EBF3;
+$color-blue-lighter: #D9F3F6;
 $color-gray: #AAAAAA;
 
 * {
@@ -14,6 +15,10 @@ $color-gray: #AAAAAA;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
+
+.bodyHome{
+    background-color: $color-background;
 }
 
 .container {
@@ -409,6 +414,185 @@ $color-gray: #AAAAAA;
             align-items: center;
             padding: 20px;
             color: $color-gray;
+        }
+    }
+    &__infoPareja{
+        width: 100%;
+    }
+    &__infoParejaContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        h2{
+            font-size: 42px;
+            margin-top: 100px;
+            margin-bottom: 40px;
+        }
+        p{
+            font-size: 24px;
+            max-width: 1161px;
+            margin-bottom: 40px;
+        }
+    }
+    &__infoParejaBox{
+        width: 90%;
+        padding: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 50px;
+        background-color: #FFFFFF;
+        gap: 15px;
+        li{
+            max-width: 90%;
+            font-size: 20px;
+            color: $color-gray;
+        }
+    }
+    &__infoFamilia{
+        width: 100%;
+    }
+    &__infoFamiliaContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        h2{
+            font-size: 42px;
+            margin-top: 100px;
+            margin-bottom: 40px;
+        }
+        p{
+            font-size: 24px;
+            max-width: 1161px;
+            margin-bottom: 40px;
+        }
+    }
+    &__infoFamiliaBox{
+        width: 90%;
+        padding: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 50px;
+        background-color: #FFFFFF;
+        gap: 15px;
+        li{
+            max-width: 90%;
+            font-size: 20px;
+            color: $color-gray;
+        }
+    }
+    &__infoAcademico{
+        width: 100%;
+    }
+    &__infoAcademicoContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        h2{
+            font-size: 42px;
+            margin-top: 100px;
+            margin-bottom: 40px;
+        }
+        p{
+            font-size: 24px;
+            max-width: 1161px;
+            margin-bottom: 40px;
+        }
+    }
+    &__infoAcademicoBox{
+        width: 90%;
+        padding: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 50px;
+        background-color: #FFFFFF;
+        gap: 15px;
+        li{
+            max-width: 90%;
+            font-size: 20px;
+            color: $color-gray;
+        }
+    }
+    &__infoSocial{
+        width: 100%;
+    }
+    &__infoSocialContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        h2{
+            font-size: 42px;
+            margin-top: 100px;
+            margin-bottom: 40px;
+        }
+        p{
+            font-size: 24px;
+            max-width: 1161px;
+            margin-bottom: 40px;
+        }
+    }
+    &__infoSocialBox{
+        width: 90%;
+        padding: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50px;
+        background-color: #FFFFFF;
+        gap: 15px;
+        div{
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            li{
+                max-width: 100%;
+                font-size: 20px;
+                color: $color-gray;
+            }
+        }
+    }
+    &__infoFisico{
+        width: 100%;
+    }
+    &__infoFisicoContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        h2{
+            font-size: 42px;
+            margin-top: 100px;
+            margin-bottom: 40px;
+        }
+        p{
+            font-size: 24px;
+            max-width: 1161px;
+            margin-bottom: 40px;
+        }
+    }
+    &__infoFisicoBox{
+        width: 90%;
+        padding: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50px;
+        background-color: #FFFFFF;
+        gap: 15px;
+        div{
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            li{
+                max-width: 100%;
+                font-size: 20px;
+                color: $color-gray;
+            }
         }
     }
 }
