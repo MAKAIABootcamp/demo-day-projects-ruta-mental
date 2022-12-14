@@ -39,33 +39,22 @@ const Home = () => {
   useEffect(() => {
     const tempPhoneLines = JSON.parse(localStorage.getItem('phoneLines'))
     const tempPlaces = JSON.parse(localStorage.getItem('places'))
-    console.log(tempPhoneLines)
-    console.log(tempPlaces)
     dispatch(actionFillPhoneLinesSync(tempPhoneLines))
     dispatch(actionFillPlacesSync(tempPlaces))
-    console.log(phoneLines)
-    console.log(places)
     getUserLocation(tempPhoneLines, tempPlaces)
-    console.log(user)
   }, [dispatch])
   useEffect(() => {
-    console.log(form)
     const tempFormResponses = JSON.parse(localStorage.getItem('form'))
-    console.log(tempFormResponses)
     dispatch(addFormSync([tempFormResponses]))
     setFormResponses([tempFormResponses])
-    console.log(tempFormResponses)
     filterInfoProblem(tempFormResponses)
   }, [dispatch])
 
   const filterInfoProblem = (tempFormResponses) => {
     const problemType = tempFormResponses[2]
-    console.log(tempFormResponses)
-    console.log(tempFormResponses[2])
     // const problemType = 'Familiar (Conflictos, maltrato, abuso)'
     let tempSuicResponse
     let tempProblem
-    console.log(problemType)
     switch (problemType) {
       case 'Familiar (Conflictos, maltrato, abuso)':
         tempProblem = ('Familiar')
@@ -90,8 +79,6 @@ const Home = () => {
     } else {
       tempSuicResponse = false
     }
-    console.log(tempProblem)
-    console.log(tempSuicResponse)
     setIsSuicProblem(tempSuicResponse)
     setProblemComponent(tempProblem)
   }
@@ -99,39 +86,30 @@ const Home = () => {
   const getUserLocation = (tempPhoneLines, tempPlaces) => {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(async (position) => {
-            console.log(position)
             let { data } = await axios.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + position.coords.latitude + "," + position.coords.longitude + "&sensor=false" + "&key=" + apiKey)
-            console.log(data)
+
         
             let location = data.results[0].address_components
             filterData(location, tempPhoneLines, tempPlaces)
-            console.log(location)
         })
     }
 }
   const filterData = (location, tempPhoneLinesData, tempPlacesData) => {
     const tempLocations = location.find((element)=>{return element.long_name == "Carepa" || element.long_name == "Medellín" ||  element.long_name =="Marinilla"})
-    console.log(tempLocations.long_name)
       setLocations(tempLocations.long_name)
-      console.log(locations)
-      console.log(location)
       const filtrado = tempPhoneLinesData.filter((item) => item.lineLocation.toLowerCase().includes(tempLocations.long_name.toLowerCase()) );
     const filtradoPlaces = tempPlacesData.filter((item) => item.placeLocation.toLowerCase().includes(tempLocations.long_name.toLowerCase()));
    
-    console.log(filtrado)
     setUbication(filtrado)
   setPlaces(filtradoPlaces)
-    console.log(ubication)
   }
 
 
 const cambio =( ubi)=>{
   const filtrado = phoneLines.filter((item) =>
   item.lineLocation.toLowerCase().includes(ubi.toLowerCase()))
-  console.log(filtrado)
   setUbication(filtrado)
   setLocations(ubi)
-  console.log(ubication)
 }
   const handleNavigate = (direction) => {
     navigate(`/${direction}`)
