@@ -10,8 +10,8 @@ import { useNavigate } from 'react-router'
 import { actionLogoutAsync } from '../../redux/actions/userAction'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-scroll'
-import { actionFillPhoneLinesAsync } from '../../redux/actions/phoneLinesActions'
-import { actionFillPlacesAsync } from '../../redux/actions/placesActions'
+import { actionFillPhoneLinesAsync, actionFillPhoneLinesSync } from '../../redux/actions/phoneLinesActions'
+import { actionFillPlacesAsync, actionFillPlacesSync } from '../../redux/actions/placesActions'
 import { addFormSync } from '../../redux/actions/formActions'
 import Navbar from '../navbar/Navbar'
 import { category } from '../../services/data'
@@ -37,12 +37,16 @@ const Home = () => {
   const [isSuicProblem, setIsSuicProblem] = useState(false)
   const [formResponses, setFormResponses] = useState(form)
   useEffect(() => {
-    dispatch(actionFillPhoneLinesAsync())
-    dispatch(actionFillPlacesAsync())
-    getUserLocation()
-    console.log(user)
+    const tempPhoneLines = JSON.parse(localStorage.getItem('phoneLines'))
+    const tempPlaces = JSON.parse(localStorage.getItem('places'))
+    console.log(tempPhoneLines)
+    console.log(tempPlaces)
+    dispatch(actionFillPhoneLinesSync(tempPhoneLines))
+    dispatch(actionFillPlacesSync(tempPlaces))
     console.log(phoneLines)
     console.log(places)
+    getUserLocation(tempPhoneLines, tempPlaces)
+    console.log(user)
   }, [dispatch])
   useEffect(() => {
     console.log(form)
@@ -92,7 +96,7 @@ const Home = () => {
     setProblemComponent(tempProblem)
   }
 
-  const getUserLocation = () => {
+  const getUserLocation = (tempPhoneLines, tempPlaces) => {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(async (position) => {
             console.log(position)
@@ -100,20 +104,19 @@ const Home = () => {
             console.log(data)
         
             let location = data.results[0].address_components
-            filterData(location)
+            filterData(location, tempPhoneLines, tempPlaces)
             console.log(location)
         })
     }
 }
-  const filterData = (location) => {
+  const filterData = (location, tempPhoneLinesData, tempPlacesData) => {
     const tempLocations = location.find((element)=>{return element.long_name == "Carepa" || element.long_name == "Medellín" ||  element.long_name =="Marinilla"})
     console.log(tempLocations.long_name)
       setLocations(tempLocations.long_name)
       console.log(locations)
       console.log(location)
-      console.log(places[0].placeLocation)
-      const filtrado = phoneLines.filter((item) => item.lineLocation.toLowerCase().includes(tempLocations.long_name.toLowerCase()) );
-    const filtradoPlaces = places.filter((item) => item.placeLocation.toLowerCase().includes(tempLocations.long_name.toLowerCase()));
+      const filtrado = tempPhoneLinesData.filter((item) => item.lineLocation.toLowerCase().includes(tempLocations.long_name.toLowerCase()) );
+    const filtradoPlaces = tempPlacesData.filter((item) => item.placeLocation.toLowerCase().includes(tempLocations.long_name.toLowerCase()));
    
     console.log(filtrado)
     setUbication(filtrado)

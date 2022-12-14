@@ -26,7 +26,8 @@ export const actionFillPhoneLinesAsync = () => {
     }
 }
 
-const actionFillPhoneLinesSync = (phoneLines) => {
+export const actionFillPhoneLinesSync = (phoneLines) => {
+    localStorage.setItem('phoneLines', JSON.stringify(phoneLines))
     return {
       type: phoneLinesTypes.PHONELINES_FILL,
       payload: phoneLines
