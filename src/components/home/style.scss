@@ -6,6 +6,7 @@
 $color-background: #F4F9F9;
 $color-blue-light: #CCF2F4;
 $color-blue: #A4EBF3;
+$color-blue-lighter: #D9F3F6;
 $color-gray: #AAAAAA;
 
 * {
@@ -14,6 +15,10 @@ $color-gray: #AAAAAA;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
+
+.bodyHome{
+    background-color: $color-background;
 }
 
 .container {

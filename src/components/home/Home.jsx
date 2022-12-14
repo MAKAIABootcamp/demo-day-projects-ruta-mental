@@ -37,9 +37,9 @@ const Home = () => {
   const [isSuicProblem, setIsSuicProblem] = useState(false)
   const [formResponses, setFormResponses] = useState(form)
   useEffect(() => {
-    getUserLocation()
     dispatch(actionFillPhoneLinesAsync())
     dispatch(actionFillPlacesAsync())
+    getUserLocation()
     console.log(user)
     console.log(phoneLines)
     console.log(places)
@@ -100,24 +100,26 @@ const Home = () => {
             console.log(data)
         
             let location = data.results[0].address_components
-            
-          const tempLocations = location.find((element)=>{return element.long_name == "Carepa" || element.long_name == "Medellín" ||  element.long_name =="Marinilla"})
-          console.log(tempLocations.long_name)
-            setLocations(tempLocations.long_name)
-            console.log(locations)
+            filterData(location)
             console.log(location)
-            console.log(places[0].placeLocation)
-            const filtrado = phoneLines.filter((item) => item.lineLocation.toLowerCase().includes(tempLocations.long_name.toLowerCase()) );
-          const filtradoPlaces = places.filter((item) => item.placeLocation.toLowerCase().includes(tempLocations.long_name.toLowerCase()));
-         
-          console.log(filtrado)
-          setUbication(filtrado)
-setPlaces(filtradoPlaces)
-          console.log(ubication)
-
         })
     }
 }
+  const filterData = (location) => {
+    const tempLocations = location.find((element)=>{return element.long_name == "Carepa" || element.long_name == "Medellín" ||  element.long_name =="Marinilla"})
+    console.log(tempLocations.long_name)
+      setLocations(tempLocations.long_name)
+      console.log(locations)
+      console.log(location)
+      console.log(places[0].placeLocation)
+      const filtrado = phoneLines.filter((item) => item.lineLocation.toLowerCase().includes(tempLocations.long_name.toLowerCase()) );
+    const filtradoPlaces = places.filter((item) => item.placeLocation.toLowerCase().includes(tempLocations.long_name.toLowerCase()));
+   
+    console.log(filtrado)
+    setUbication(filtrado)
+  setPlaces(filtradoPlaces)
+    console.log(ubication)
+  }
 
 
 const cambio =( ubi)=>{
