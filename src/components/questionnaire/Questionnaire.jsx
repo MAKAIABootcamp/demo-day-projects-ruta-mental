@@ -4,6 +4,8 @@ import { questionnaire } from '../../services/data'
 import { useNavigate } from 'react-router'
 import { addFormSync } from '../../redux/actions/formActions'
 import { useDispatch } from 'react-redux'
+import { actionFillPhoneLinesAsync } from '../../redux/actions/phoneLinesActions'
+import { actionFillPlacesAsync } from '../../redux/actions/placesActions'
 
 const Questionnaire = () => {
     const navigate = useNavigate()
@@ -12,6 +14,11 @@ const Questionnaire = () => {
     const [value, setValue] = useState(0)
     const { question, options } = questionnaireInfo[value]
     const [responses, setResponses] = useState([])
+
+    useEffect(() => {
+        dispatch(actionFillPhoneLinesAsync())
+        dispatch(actionFillPlacesAsync())
+      }, [dispatch])
 
     const handleSelect = (response) => {
         setResponses(
