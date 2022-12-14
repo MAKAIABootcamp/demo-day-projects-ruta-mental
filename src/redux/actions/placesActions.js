@@ -26,7 +26,8 @@ export const actionFillPlacesAsync = () => {
     }
 }
 
-const actionFillPlacesSync = (places) => {
+export const actionFillPlacesSync = (places) => {
+    localStorage.setItem('places', JSON.stringify(places))
     return {
       type: placesTypes.PLACES_FILL,
       payload: places
